@@ -4,7 +4,11 @@
 <ul>
 
 {% for user in users %}
-    <li>{{ user.name }}   <a>  <img src="{{ user.image.url|default_if_none:'#'}}" height="420"></a>   </li>
+    <li>{{ user.name }}  
+{% if user.image %}
+	<a>  <img src="{{ user.image.url}}" height="420"></a>   
+{% endif %}
+	</li>
 {% endfor %}
 
 </ul>
