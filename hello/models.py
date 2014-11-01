@@ -35,7 +35,7 @@ class Points(models.Model):
     points  = models.IntegerField()
 
 class Standings(models.Model):
-    discipline = models.ForeigKey(Discipline)
+    discipline = models.ForeignKey(Discipline)
 
 class Tournament(models.Model):
     created                 = models.DateTimeField('date created', auto_now_add=True)
