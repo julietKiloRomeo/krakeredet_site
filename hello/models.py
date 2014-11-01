@@ -34,7 +34,7 @@ class Points(models.Model):
     user    = models.ForeignKey(User)
     points  = models.IntegerField()
 
-class Standings(models.model):
+class Standings(models.Model):
     discipline = models.ForeigKey(Discipline)
 
 class Tournament(models.Model):
@@ -45,7 +45,7 @@ class Tournament(models.Model):
     def __unicode__(self):
         return self.date
 
-class Post(models.model):
+class Post(models.Model):
     text    = models.TextField()
     user    = models.ForeignKey(User)
     time    = models.DateTimeField()
