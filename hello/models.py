@@ -9,7 +9,7 @@ class User(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
     name            = models.CharField(max_length=200)
     nick            = models.CharField(max_length=200)
-    image           = models.ImageField(blank=True, null=True)
+    image           = models.ImageField(upload_to='.', blank=True, null=True)
     description     = models.TextField()
     height          = models.IntegerField()
     weight          = models.FloatField()
@@ -25,7 +25,7 @@ class User(models.Model):
 class Discipline(models.Model):
     created     = models.DateTimeField('date created', auto_now_add=True)
     name        = models.CharField(max_length=200)
-    image       = models.ImageField(blank=True, null=True)
+    image       = models.ImageField(upload_to='.', blank=True, null=True)
     description = models.TextField()
     def __unicode__(self):
         return self.name
