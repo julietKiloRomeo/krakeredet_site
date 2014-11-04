@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Greeting(models.Model):
     when = models.DateTimeField('date created', auto_now_add=True)
@@ -30,20 +31,23 @@ class Discipline(models.Model):
     def __unicode__(self):
         return self.name
 
-class Points(models.Model):
-    user    = models.ForeignKey(User)
-    points  = models.IntegerField()
-
-class Standings(models.Model):
-    discipline = models.ForeignKey(Discipline)
 
 class Tournament(models.Model):
     created                 = models.DateTimeField('date created', auto_now_add=True)
     name                    = models.CharField(max_length=200)
     date                    = models.DateField()
-    discipline_standings    = models.ForeignKey(Standings)
     def __unicode__(self):
-        return self.date
+        return self.name
+
+class Standings(models.Model):
+    discipline = models.ForeignKey(Discipline)
+    tournament = models.ForeignKey(Tournament)
+
+class Points(models.Model):
+    user        = models.ForeignKey(User)
+    standings   = models.ForeignKey(Standings)
+    points      = models.IntegerField()
+    score       = models.IntegerField()
 
 class Post(models.Model):
     text    = models.TextField()
