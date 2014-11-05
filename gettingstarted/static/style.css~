@@ -1,0 +1,33 @@
+table {
+  font-family: 'Arial';
+  margin: 25px;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  border-bottom: 2px solid #00cccc;
+  }
+caption {
+  font-family: 'Arial';
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-left: -1px; /* Fix FF 1px issue */
+    }
+
+  tr:hover {
+      background: #ddffff;
+      }
+      
+  td {
+      color: #555;
+  		}
+  th, td {
+    color: #999;
+    border: 1px solid #eee;
+    padding: 12px 35px;
+    border-collapse: collapse;
+  }
+  th {
+    background: #00cccc;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+  }

@@ -4,7 +4,7 @@
 <ul>
 
 {% for user in users %}
-    <li>{{ user.pk }}  
+    <li>{{ user.name }}  
 {% if user.image %}
 	<a>  <img src="{{ user.image.url}}" height="120"></a>   
 {% endif %}

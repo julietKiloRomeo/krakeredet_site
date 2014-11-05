@@ -1,17 +1,23 @@
-<h1>Vansjø Open</h1>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<script language="javascript" type="text/javascript" src="{% static 'script.css' %}"></script>
+<h1>{{comp.name}} {{comp.date}}</h1>
 
 
-<ul>
-
-    <li>{{ comp.name }}  
-    <ul>
-
-		{% for s in standings %}
-   		<li>jkr 
-			</li>
+		{% for key, value in tournament.items %}
+   		
+			<table>
+   		<caption> {{key }}</caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
+			</thead>
+			<tbody>
+			{% for name_pts in value %}
+				<tr>
+   		<td> {{name_pts.name}}</td><td>{{name_pts.points}}</td><td>{{name_pts.score}}</td>
+				</tr>		
+			{% endfor %}
+			</tbody>
+			</table>   		
+   		
 		{% endfor %}
-
-	</ul>
-	</li>
-
-</ul>

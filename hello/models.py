@@ -47,7 +47,7 @@ class Points(models.Model):
     user        = models.ForeignKey(User)
     standings   = models.ForeignKey(Standings)
     points      = models.IntegerField()
-    score       = models.IntegerField()
+    score       = models.IntegerField(null=True, blank=True)
 
 class Post(models.Model):
     text    = models.TextField()
