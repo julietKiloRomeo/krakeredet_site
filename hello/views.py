@@ -25,16 +25,21 @@ def tournament(request, idx):
     comp = Tournament.objects.get(pk=idx)
     standings = Standings.objects.filter(tournament=idx)
     tournament = {}
+    total = {}
     # loop over disciplines
     for s in standings:
-        all_p = Points.objects.filter(standings = s.pk)
+        all_p = Points.objects.filter(standings = s).order_by('-points')
         tournament[s.discipline.name]=[]
         # loop over participants
         for p in all_p:
             tournament[s.discipline.name].append(p)
+            if p.user.name in total:
+                total[p.user.name] += p.points 
+            else:
+                total[p.user.name] = p.points 
         # sort participants, most points first
     
-    return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament})
+    return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament, 'total':total})
 
 def db(request):
 

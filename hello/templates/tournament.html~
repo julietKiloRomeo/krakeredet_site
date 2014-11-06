@@ -9,6 +9,23 @@
 {% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
 
 {% block body_block %}
+
+			<table>
+   		<caption> Total </caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
+			</thead>
+			<tbody>
+			{% for name, score in total.items %}
+				<tr>
+   		<td> {{name}} </a> </td><td>{{score}}</td>
+				</tr>		
+			{% endfor %}
+			</tbody>
+			</table>   		
+
+
+
 		{% for discipline, scores in tournament.items %}
    		
 			<table>
@@ -19,7 +36,7 @@
 			<tbody>
 			{% for point in scores %}
 				<tr>
-   		<td> <a href="user/{{ point.user.pk }}/">{{point.user.name}} </a> </td><td>{{point.points}}</td><td>{{point.score}}</td>
+   		<td> <a href="/user/{{ point.user.pk }}/">{{point.user.name}} </a> </td><td>{{point.points}}</td><td>{{point.score}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>
