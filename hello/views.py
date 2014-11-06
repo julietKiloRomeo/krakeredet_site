@@ -9,6 +9,18 @@ def index(request):
     comps = Tournament.objects.all()
     return render(request, 'index.html', {'comps': comps})
 
+def user_detail(request, idx):
+    this_user = User.objects.get(pk=idx)
+    
+    best_results = {}
+    
+    disciplines = Discipline.objects.all()
+    for d in disciplines:
+        best_results[d.name] = Points.objects.filter(user=this_user).filter(standings__discipline=d).order_by('-score')[0:3]
+    
+    
+    return render(request, 'user_detail.html', {'user': this_user, 'results':best_results})
+
 def tournament(request, idx):
     comp = Tournament.objects.get(pk=idx)
     standings = Standings.objects.filter(tournament=idx)
@@ -19,11 +31,7 @@ def tournament(request, idx):
         tournament[s.discipline.name]=[]
         # loop over participants
         for p in all_p:
-            out = {}
-            out['name'] = p.user.name
-            out['score'] = p.score
-            out['points'] = p.points
-            tournament[s.discipline.name].append(out)
+            tournament[s.discipline.name].append(p)
         # sort participants, most points first
     
     return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament})

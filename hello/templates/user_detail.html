@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.name }}{% endblock %}
+
+{% block body_block %}
+
+
+{% for discipline, scores in results.items %}
+
+{{discipline}}
+{% for s in scores %}
+<ul>
+  <li>{{s.score}}</li>
+</ul>
+{% endfor %}
+
+
+
+{% endfor %}
+
+{% endblock %}

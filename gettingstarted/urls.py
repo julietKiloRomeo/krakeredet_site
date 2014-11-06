@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^db', hello.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tournament/([0-9]*?)/$', hello.views.tournament),
+    url(r'^user/([0-9]*?)/$', hello.views.user_detail),
 
 )
 

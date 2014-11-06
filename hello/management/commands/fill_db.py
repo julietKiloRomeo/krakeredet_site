@@ -35,8 +35,19 @@ class Command(BaseCommand):
                      passwordhash    = '124',
                      country         = 'NO',
                      level           = 4)
+        tombo = User(name = 'Tommy',
+                     nick = 'Bro',
+                     description     = 'rty' ,
+                     height          = 200,
+                     weight          = 100.0,
+                     birthdate       = '1983-06-14',
+                     email           = 'tommy.rasmussen@gmail.com',
+                     passwordhash    = '124',
+                     country         = 'DK',
+                     level           = 2)
         jimbo.save()                     
         brede.save()                     
+        tombo.save()                     
         
         # disciplines       
         dart = Discipline(name = 'Dart',
@@ -57,6 +68,10 @@ class Command(BaseCommand):
         comp2 = Tournament(name = 'Vansjo Open',
                           date = '2011-02-19')
         comp2.save()
+
+        comp3 = Tournament(name = 'Vansjo Open',
+                          date = '2013-03-19')
+        comp3.save()
         
 #        # standings
         dart_results1 = Standings(discipline = dart,
@@ -79,16 +94,30 @@ class Command(BaseCommand):
         skyd_results2.save()            
         krok_results2.save()            
         
+        dart_results3 = Standings(discipline = dart,
+                                 tournament = comp3)
+        skyd_results3 = Standings(discipline = skydning,
+                                 tournament = comp3)
+        krok_results3 = Standings(discipline = kroket,
+                                 tournament = comp3)
+        dart_results3.save()            
+        skyd_results3.save()            
+        krok_results3.save()            
         # points
         p = Points(points = 4, 
                    user = jimbo,
                    standings = dart_results1,
-                   score = 12)
+                   score = 14)
         p.save()
         p = Points(points = 3, 
                    user = brede,
                    standings = dart_results1,
                    score = 10)
+        p.save()
+        p = Points(points = 2, 
+                   user = tombo,
+                   standings = dart_results1,
+                   score = 8)
         p.save()
 
         p = Points(points = 3, 
@@ -101,6 +130,11 @@ class Command(BaseCommand):
                    standings = skyd_results1,
                    score = 37)
         p.save()
+        p = Points(points = 2, 
+                   user = tombo,
+                   standings = skyd_results1,
+                   score = 30)
+        p.save()
 
         p = Points(points = 0, 
                    user = jimbo,
@@ -111,6 +145,11 @@ class Command(BaseCommand):
                    user = brede,
                    standings = krok_results1,
                    score = 100)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = krok_results1,
+                   score = 71)
         p.save()
         #----------
         p = Points(points = 4, 
@@ -118,34 +157,94 @@ class Command(BaseCommand):
                    standings = dart_results2,
                    score = 12)
         p.save()
-        p = Points(points = 3, 
+        p = Points(points = 2, 
                    user = brede,
                    standings = dart_results2,
-                   score = 10)
+                   score = 6)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = dart_results2,
+                   score = 11)
         p.save()
 
-        p = Points(points = 3, 
+        p = Points(points = 2, 
                    user = jimbo,
                    standings = skyd_results2,
-                   score = 32)
+                   score = 31)
         p.save()
         p = Points(points = 4, 
                    user = brede,
                    standings = skyd_results2,
-                   score = 37)
+                   score = 39)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = skyd_results2,
+                   score = 32)
         p.save()
 
         p = Points(points = 0, 
                    user = jimbo,
                    standings = krok_results2,
-                   score = 5)
+                   score = 4)
         p.save()
         p = Points(points = 4, 
                    user = brede,
                    standings = krok_results2,
-                   score = 100)
+                   score = 107)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = krok_results2,
+                   score = 87)
         p.save()
 
+        #----------
+        p = Points(points = 2, 
+                   user = jimbo,
+                   standings = dart_results3,
+                   score = 11)
+        p.save()
+        p = Points(points = 3, 
+                   user = brede,
+                   standings = dart_results3,
+                   score = 9)
+        p.save()
+        p = Points(points = 4, 
+                   user = tombo,
+                   standings = dart_results3,
+                   score = 17)
+        p.save()
 
+        p = Points(points = 2, 
+                   user = jimbo,
+                   standings = skyd_results3,
+                   score = 35)
+        p.save()
+        p = Points(points = 4, 
+                   user = brede,
+                   standings = skyd_results3,
+                   score = 41)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = skyd_results3,
+                   score = 34)
+        p.save()
 
-
+        p = Points(points = 0, 
+                   user = jimbo,
+                   standings = krok_results3,
+                   score = 42)
+        p.save()
+        p = Points(points = 4, 
+                   user = brede,
+                   standings = krok_results3,
+                   score = 105)
+        p.save()
+        p = Points(points = 3, 
+                   user = tombo,
+                   standings = krok_results3,
+                   score = 91)
+        p.save()
