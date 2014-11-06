@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+<script language="javascript" type="text/javascript" src="{% static 'script.css' %}"></script>
+
+
+<html>
+    <head>
+<div style="position: relative; left: 250px; top: 50px;">
+<h1>{% block title %}{% endblock %}</h1>
+</div>
+<div style="position: relative; left: 750px; top: -50px;">
+	<a>  <img src={% static "media/crow.jpg" %} height="120"></a>   
+</div>        
+    </head>
+
+    <body>
+        <div style="position: relative; left: 150px; top: 100px;">
+            {% block body_block %}{% endblock %}
+        </div>
+
+<!--
+        <hr />
+        <div>
+            <ul>
+            {% if user.is_authenticated %}
+                <li><a href="/rango/restricted/">Restricted Page</a></li>
+                <li><a href="/rango/logout/">Logout</a></li>
+                <li><a href="/rango/add_category/">Add a New Category</a></li>
+            {% else %}
+                <li><a href="/rango/register/">Register Here</a></li>
+                <li><a href="/rango/login/">Login</a></li>
+            {% endif %}
+
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </div>
+-->
+    </body>
+</html>

@@ -43,41 +43,109 @@ class Command(BaseCommand):
                           description = 'Mickey Mouse')  
         skydning = Discipline(name = 'Skydning',
                           description = 'Luftgevar')  
+        kroket = Discipline(name = 'Kroket',
+                          description = 'Vansjo rules')  
         dart.save()
         skydning.save()
+        kroket.save()
         
         # tournaments
-        comp = Tournament(name = 'Vansjo Open',
+        comp1 = Tournament(name = 'Vansjo Open',
                           date = '2012-02-19')
-        comp.save()
+        comp1.save()
+
+        comp2 = Tournament(name = 'Vansjo Open',
+                          date = '2011-02-19')
+        comp2.save()
         
 #        # standings
-        dart_results = Standings(discipline = dart,
-                                 tournament = comp)
-        skyd_results = Standings(discipline = skydning,
-                                 tournament = comp)
-        dart_results.save()            
-        skyd_results.save()            
+        dart_results1 = Standings(discipline = dart,
+                                 tournament = comp1)
+        skyd_results1 = Standings(discipline = skydning,
+                                 tournament = comp1)
+        krok_results1 = Standings(discipline = kroket,
+                                 tournament = comp1)
+        dart_results1.save()            
+        skyd_results1.save()            
+        krok_results1.save()            
+
+        dart_results2 = Standings(discipline = dart,
+                                 tournament = comp2)
+        skyd_results2 = Standings(discipline = skydning,
+                                 tournament = comp2)
+        krok_results2 = Standings(discipline = kroket,
+                                 tournament = comp2)
+        dart_results2.save()            
+        skyd_results2.save()            
+        krok_results2.save()            
         
         # points
         p = Points(points = 4, 
                    user = jimbo,
-                   standings = dart_results,
+                   standings = dart_results1,
                    score = 12)
         p.save()
         p = Points(points = 3, 
                    user = brede,
-                   standings = dart_results,
+                   standings = dart_results1,
                    score = 10)
         p.save()
 
         p = Points(points = 3, 
                    user = jimbo,
-                   standings = skyd_results,
+                   standings = skyd_results1,
                    score = 32)
         p.save()
         p = Points(points = 4, 
                    user = brede,
-                   standings = skyd_results,
+                   standings = skyd_results1,
                    score = 37)
         p.save()
+
+        p = Points(points = 0, 
+                   user = jimbo,
+                   standings = krok_results1,
+                   score = 5)
+        p.save()
+        p = Points(points = 4, 
+                   user = brede,
+                   standings = krok_results1,
+                   score = 100)
+        p.save()
+        #----------
+        p = Points(points = 4, 
+                   user = jimbo,
+                   standings = dart_results2,
+                   score = 12)
+        p.save()
+        p = Points(points = 3, 
+                   user = brede,
+                   standings = dart_results2,
+                   score = 10)
+        p.save()
+
+        p = Points(points = 3, 
+                   user = jimbo,
+                   standings = skyd_results2,
+                   score = 32)
+        p.save()
+        p = Points(points = 4, 
+                   user = brede,
+                   standings = skyd_results2,
+                   score = 37)
+        p.save()
+
+        p = Points(points = 0, 
+                   user = jimbo,
+                   standings = krok_results2,
+                   score = 5)
+        p.save()
+        p = Points(points = 4, 
+                   user = brede,
+                   standings = krok_results2,
+                   score = 100)
+        p.save()
+
+
+
+

@@ -1,9 +1,14 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-<script language="javascript" type="text/javascript" src="{% static 'script.css' %}"></script>
-<h1>{{comp.name}} {{comp.date}}</h1>
+{% extends 'base.html' %}
 
 
+
+
+
+
+
+{% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
+
+{% block body_block %}
 		{% for key, value in tournament.items %}
    		
 			<table>
@@ -21,3 +26,4 @@
 			</table>   		
    		
 		{% endfor %}
+{% endblock %}

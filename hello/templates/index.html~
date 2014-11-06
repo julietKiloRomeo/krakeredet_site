@@ -1,14 +1,13 @@
-<h1>Krakeredet</h1>
+{% extends 'base.html' %}
 
+{% block title %}Krakeredet{% endblock %}
 
+{% block body_block %}
 <ul>
 
-{% for user in users %}
-    <li>{{ user.name }}  
-{% if user.image %}
-	<a>  <img src="{{ user.image.url}}" height="120"></a>   
-{% endif %}
-	</li>
+{% for comp in comps %}
+    <li> <a href="tournament/8/"> {{ comp.name }} | {{ comp.date }} </a>	</li>
 {% endfor %}
 
 </ul>
+{% endblock %}
