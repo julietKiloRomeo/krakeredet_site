@@ -13,12 +13,12 @@
 			<table>
    		<caption> Total </caption>
 			<thead>
-			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
+			<tr>  <th>Name</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
-			{% for name, score in total.items %}
+			{% for name_score in total|dictsort:"points" %}
 				<tr>
-   		<td> {{name}} </a> </td><td>{{score}}</td>
+   		<td> {{name_score.name}} </a> </td><td>{{name_score.points}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>

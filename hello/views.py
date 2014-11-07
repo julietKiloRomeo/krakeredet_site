@@ -36,10 +36,15 @@ def tournament(request, idx):
             if p.user.name in total:
                 total[p.user.name] += p.points 
             else:
-                total[p.user.name] = p.points 
+                total[p.user.name] = p.points
+        total_list = []
+        for k in total.keys():
+            name = k
+            pts  = total[k]
+            total_list.append({'name':k, 'points':pts})
         # sort participants, most points first
     
-    return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament, 'total':total})
+    return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament, 'total':total_list})
 
 def db(request):
 
