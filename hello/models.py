@@ -20,6 +20,7 @@ class User(models.Model):
     country         = models.CharField(max_length=200)
     level           = models.IntegerField()
     
+    
     def __unicode__(self):
         return self.name
     def level_name(self):

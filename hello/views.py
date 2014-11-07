@@ -10,23 +10,27 @@ def index(request):
     return render(request, 'index.html', {'comps': comps})
 
 def user_detail(request, idx):
+    # fetch user
     this_user = User.objects.get(pk=idx)
-    
+    # init best results
     best_results = {}
-    
+    # populate best results
     disciplines = Discipline.objects.all()
     for d in disciplines:
         best_results[d.name] = Points.objects.filter(user=this_user).filter(standings__discipline=d).order_by('-score')[0:3]
     
-    
     return render(request, 'user_detail.html', {'user': this_user, 'results':best_results})
 
 def tournament(request, idx):
+    # fetch tournament
     comp = Tournament.objects.get(pk=idx)
+    # and corresponding standings
     standings = Standings.objects.filter(tournament=idx)
+    # init dict for tournament data
     tournament = {}
+    # init temporary dict for total score
     total = {}
-    # loop over disciplines
+    # loop over disciplines and populate tournament and totals
     for s in standings:
         all_p = Points.objects.filter(standings = s).order_by('-points')
         tournament[s.discipline.name]=[]
@@ -38,6 +42,7 @@ def tournament(request, idx):
             else:
                 total[p.user.name] = p.points
         total_list = []
+        # reorder totals for use with django's dictsort filter
         for name in total.keys():
             pts  = total[name]
             total_list.append({'name':name, 'points':pts})
