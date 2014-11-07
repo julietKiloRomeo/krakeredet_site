@@ -42,12 +42,16 @@ class Tournament(models.Model):
 class Standings(models.Model):
     discipline = models.ForeignKey(Discipline)
     tournament = models.ForeignKey(Tournament)
+    class Meta:
+        verbose_name_plural = "standings"
 
 class Points(models.Model):
     user        = models.ForeignKey(User)
     standings   = models.ForeignKey(Standings)
     points      = models.IntegerField()
     score       = models.IntegerField(null=True, blank=True)
+    class Meta:
+        verbose_name_plural = "points"
 
 class Post(models.Model):
     text    = models.TextField()
