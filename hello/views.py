@@ -48,7 +48,10 @@ def tournament(request, idx):
     
 def discipline_detail(request, idx):
     disc = Discipline.objects.get(pk=idx)
-    return render(request, 'discipline_detail.html',{'discipline':disc})
+    # get list of top 5 scores ever
+    top_5 = Points.objects.filter(standings__discipline=disc).order_by('-score')[0:5]    
+    
+    return render(request, 'discipline_detail.html',{'discipline':disc, 'top_5':top_5})
 
 def db(request):
 

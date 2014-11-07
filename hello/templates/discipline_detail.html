@@ -10,7 +10,22 @@
 
 {% block body_block %}
 
-{{discipline.description}}		
+{{discipline.description}}	
+
+			<table>
+   		<caption> Top 5</caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Score</th> <th>Date</th> </tr>			
+			</thead>
+			<tbody>
+			{% for record in top_5 %}
+				<tr>
+   		<td> <a href="/user/{{ record.user.pk }}/">{{record.user.name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date}}</td>
+				</tr>		
+			{% endfor %}
+			</tbody>
+			</table>   		
+
 
 
 {% endblock %}
