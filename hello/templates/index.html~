@@ -6,7 +6,7 @@
 <ul>
 
 {% for comp in comps %}
-    <li> <a href="tournament/8/"> {{ comp.name }} | {{ comp.date }} </a>	</li>
+    <li> <a href="tournament/{{ comp.pk }}/"> {{ comp.name }} | {{ comp.date }} </a>	</li>
 {% endfor %}
 
 </ul>

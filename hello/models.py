@@ -22,6 +22,9 @@ class User(models.Model):
     
     def __unicode__(self):
         return self.name
+    def level_name(self):
+        names = [u'Kj\xf8tmeis',u'Kr\xe5ke',u'\xd8rn',u'F\xf8nix']
+        return names[self.level - 1]
     
 class Discipline(models.Model):
     created     = models.DateTimeField('date created', auto_now_add=True)
@@ -37,7 +40,8 @@ class Tournament(models.Model):
     name                    = models.CharField(max_length=200)
     date                    = models.DateField()
     def __unicode__(self):
-        return self.name
+        return self.name + ' ' + self.date.strftime('%d %B %y')
+
 
 class Standings(models.Model):
     discipline = models.ForeignKey(Discipline)

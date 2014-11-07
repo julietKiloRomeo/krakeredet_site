@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hello'
+    'hello',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,6 +106,14 @@ ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'static'
 STATIC_URL = '/static/'
+
+
+if not DEBUG:
+    AWS_STORAGE_BUCKET_NAME = os.environ['julietkiloromeo']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
+
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
