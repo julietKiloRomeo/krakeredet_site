@@ -31,3 +31,17 @@ caption {
     text-transform: uppercase;
     font-size: 12px;
   }
+
+a:link {
+    color: #000000;
+}
+
+/* visited link */
+a:visited {
+    color: #000000;
+}
+
+/* mouse over link */
+a:hover {
+    color: #AAFFFF;
+}
