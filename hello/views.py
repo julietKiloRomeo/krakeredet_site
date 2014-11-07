@@ -38,13 +38,17 @@ def tournament(request, idx):
             else:
                 total[p.user.name] = p.points
         total_list = []
-        for k in total.keys():
-            name = k
-            pts  = total[k]
-            total_list.append({'name':k, 'points':pts})
+        for name in total.keys():
+            pts  = total[name]
+            total_list.append({'name':name, 'points':pts})
         # sort participants, most points first
     
     return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament, 'total':total_list})
+    
+    
+def discipline_detail(request, idx):
+    disc = Discipline.objects.get(pk=idx)
+    return render(request, 'discipline_detail.html',{'discipline':disc})
 
 def db(request):
 

@@ -16,7 +16,7 @@
 			<tr>  <th>Name</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
-			{% for name_score in total|dictsort:"points" %}
+			{% for name_score in total|dictsortreversed:"points" %}
 				<tr>
    		<td> {{name_score.name}} </a> </td><td>{{name_score.points}}</td>
 				</tr>		
@@ -29,7 +29,7 @@
 		{% for discipline, scores in tournament.items %}
    		
 			<table>
-   		<caption> {{discipline}}</caption>
+   		<caption> {{scores.1.standings.discipline.name}}</caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>

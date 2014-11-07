@@ -29,7 +29,7 @@
 		{% for discipline, scores in tournament.items %}
    		
 			<table>
-   		<caption> <a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{scores.1.standings.discipline.name}}</a></caption>
+   		<caption> {{discipline}}</caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>
