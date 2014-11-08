@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block usermenu %}login{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkuranser</a> {% endblock %}
+
+
+{% block title %}Konkuranser{% endblock %}
+
+{% block body_block %}
+<ul>
+
+{% for comp in comps %}
+    <li> <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} | {{ comp.date }} </a>	</li>
+{% endfor %}
+
+</ul>
+{% endblock %}

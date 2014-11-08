@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+
+{% block usermenu %}login{% endblock %}
+{% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
+
+
 {% block title %}{{ user.name }}|{{ user.level_name }}{% endblock %}
 
 {% block body_block %}

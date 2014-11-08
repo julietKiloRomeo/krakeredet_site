@@ -7,11 +7,12 @@
 
 <html>
     <head>
+login | kråkeredet
 <div style="position: relative; left: 250px; top: 50px;">
 <h1>{% block title %}{% endblock %}</h1>
 </div>
 <div style="position: relative; left: 750px; top: -50px;">
-	<a>  <img src={% static "media/crow.jpg" %} height="120"></a>   
+	<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
 </div>        
     </head>
 

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block usermenu %}login{% endblock %}
+{% block navmenu %}<a href="/">krakeredet</a> &middot; <a href="/user/">kråker</a>{% endblock %}
+
+
+{% block title %}Kråker{% endblock %}
+
+{% block body_block %}
+
+
+<ul>
+{% for user in users %}
+
+  <li><a href="/user/{{ user.pk }}/">{{user.name}} </a> </li>
+{% endfor %}
+</ul>
+
+
+
+{% endblock %}

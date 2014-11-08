@@ -9,6 +9,19 @@ def index(request):
     comps = Tournament.objects.all()
     return render(request, 'index.html', {'comps': comps})
 
+def tournament_list(request):
+    comps = Tournament.objects.all()
+    return render(request, 'tournament_list.html', {'comps': comps})
+
+def user_list(request):
+    users = User.objects.all()
+    return render(request, 'user_list.html', {'users': users})
+
+def discipline_list(request):
+    disciplines = Discipline.objects.all()
+    return render(request, 'discipline_list.html', {'disciplines': disciplines})
+
+
 def user_detail(request, idx):
     # fetch user
     this_user = User.objects.get(pk=idx)
@@ -21,7 +34,7 @@ def user_detail(request, idx):
     
     return render(request, 'user_detail.html', {'user': this_user, 'results':best_results})
 
-def tournament(request, idx):
+def tournament_detail(request, idx):
     # fetch tournament
     comp = Tournament.objects.get(pk=idx)
     # and corresponding standings
@@ -48,7 +61,7 @@ def tournament(request, idx):
             total_list.append({'name':name, 'points':pts})
         # sort participants, most points first
     
-    return render(request, 'tournament.html', {'comp': comp, 'tournament':tournament, 'total':total_list})
+    return render(request, 'tournament_detail.html', {'comp': comp, 'tournament':tournament, 'total':total_list})
     
     
 def discipline_detail(request, idx):

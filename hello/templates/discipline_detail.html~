@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block usermenu %}login{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/discipline/">disipliner</a> &middot; {{discipline.name}}{% endblock %}
 
 
 
@@ -19,7 +21,6 @@
 			</thead>
 			<tbody>
 			{% for record in top_5 %}
-			as
 				<tr>
    		<td> <a href="/user/{{ record.user.pk }}/">{{record.user.name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date}}</td>
 				</tr>		

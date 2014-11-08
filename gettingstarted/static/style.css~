@@ -31,3 +31,20 @@ caption {
     text-transform: uppercase;
     font-size: 12px;
   }
+
+a:link {
+    color: #000000;
+ text-decoration:none;  
+}
+
+/* visited link */
+a:visited {
+    color: #000000;
+}
+
+/* mouse over link */
+a:hover {
+  font-weight: demi;
+}
+
+

@@ -3,7 +3,8 @@
 
 
 
-
+{% block usermenu %}login{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> &middot; {{comp.date|lower}}{% endblock %}
 
 
 {% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
@@ -18,7 +19,7 @@
 			<tbody>
 			{% for name_score in total|dictsortreversed:"points" %}
 				<tr>
-   		<td> {{name_score.name}} </a> </td><td>{{name_score.points}}</td>
+   		<td> {{name_score.name}} </td><td>{{name_score.points}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>

@@ -16,9 +16,12 @@ urlpatterns = patterns('',
     url(r'^$', hello.views.index, name='index'),
     url(r'^db', hello.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^tournament/([0-9]*?)/$', hello.views.tournament),
+    url(r'^tournament/([0-9]*?)/$', hello.views.tournament_detail),
+    url(r'^tournament/$', hello.views.tournament_list),
     url(r'^user/([0-9]*?)/$', hello.views.user_detail),
+    url(r'^user/$', hello.views.user_list),
     url(r'^discipline/([0-9]*?)/$', hello.views.discipline_detail),
+    url(r'^discipline/$', hello.views.discipline_list),
 
 )
 
