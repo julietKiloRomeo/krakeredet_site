@@ -42,7 +42,30 @@ class Tournament(models.Model):
     date                    = models.DateField()
     def __unicode__(self):
         return self.name + ' ' + self.date.strftime('%d %B %y')
-
+        
+    def totals(self):
+        standings = Standings.objects.filter(tournament=self)
+        # init dict for tournament data
+        tournament = {}
+        # init total field
+        tournament['total']={}
+        # loop over disciplines and populate tournament
+        for s in standings:
+            # find all Point objects in standings
+            all_p = Points.objects.filter(standings = s).order_by('-points')
+            # and int a dict for this discipline
+            tournament[s.discipline.name]={}
+            # loop over participants
+            for p in all_p:
+                # put participants score in discipline field
+                tournament[s.discipline.name][p.name] = {'points':p.points,'score':p.score}
+                # also add points in this discipline to totals
+                if p.user.name in tournament['total'].keys():
+                    tournament['total'][p.user.name]['points'] += p.points 
+                else:
+                    tournament['total'][p.user.name] = {'points':p.points}
+                    tournament['total'][p.user.name]['points'] = p.points 
+        return tournament
 
 class Standings(models.Model):
     discipline = models.ForeignKey(Discipline)
