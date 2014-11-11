@@ -8,18 +8,21 @@
 {% block title %}Kråkeredet{% endblock %}
 
 {% block nav_block %}
-<ul>
 
-    <li> <a href="/user/"> Kråker </a>	</li>
-    <li> <a href="/tournament/"> Konkurranser </a>	</li>
-    <li> <a href="/discipline/"> Disipliner </a>	</li>
+<div>
+<img src={% static "media/vansjo_1.jpg" %} width="100%">
+<div  id="test"  > <a href="/user/"> Kråker </a>   </div>
+<div  id="test"  > <a href="/tournament/"> Konkurranser </a>   </div>
+<div  id="test"  > <a href="/discipline/"> Disipliner </a>  </div>
 
-</ul>
+
+</div>
+
+
 {% endblock %}
 
 
 {% block body_block %}
 
-<img src={% static "media/vansjo_1.jpg" %} width="500px">
 
 {% endblock %}
