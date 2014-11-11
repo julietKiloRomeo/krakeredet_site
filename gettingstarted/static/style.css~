@@ -54,7 +54,7 @@ a:hover {
    height:120px;
    line-height:120px;
    position:relative;
-   top: 80px;
+   top: 70px;
    left: -200px;
    z-index:10;
     background: #ffffff;
@@ -76,10 +76,13 @@ a:hover {
 }
 
 #body {
-    width:350px;
+    width:700px;
    position:relative;
-   top: -400px;
-   left: 210px;
+   top: -1300px;
+   left: 500px;
+    background: #ffffff;
+    opacity: 0.95;
+   padding:15px;
 }
 
 #test {    

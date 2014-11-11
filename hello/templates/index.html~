@@ -10,7 +10,7 @@
 {% block nav_block %}
 
 <div>
-<img src={% static "media/vansjo_1.jpg" %} width="100%">
+<img src={% static "media/vansjo_1.jpg" %} height="100%">
 <div  id="test"  > <a href="/user/"> Kråker </a>   </div>
 <div  id="test"  > <a href="/tournament/"> Konkurranser </a>   </div>
 <div  id="test"  > <a href="/discipline/"> Disipliner </a>  </div>

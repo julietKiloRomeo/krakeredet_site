@@ -49,15 +49,5 @@
 		{% endfor %}
 {% endblock %}
 
-{% block nav_block %}
-<ul>
-		{% for discipline, scores in standings.items %}
-		{% if discipline == "total" %}
-		{% else %}
-   		<li><a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{discipline}}</a></li>
-		{% endif %}
 
-		{% endfor %}
-		</ul>
-{% endblock %}
 

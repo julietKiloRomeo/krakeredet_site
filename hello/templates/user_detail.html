@@ -8,6 +8,7 @@
 {% block title %}{{ user.name }}|{{ user.level_name }}{% endblock %}
 
 {% block body_block %}
+<div id="body">
 
 
 Wins : {{wins}}<br>
@@ -34,5 +35,5 @@ Wins : {{wins}}<br>
 
 
 {% endfor %}
-
+</div>
 {% endblock %}
