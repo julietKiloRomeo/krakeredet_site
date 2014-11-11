@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block usermenu %}login{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">disipliner</a> {% endblock %}
+
+
+{% block title %}Disipliner{% endblock %}
+
+{% block nav_block %}
+<ul>
+
+{% for disc in disciplines %}
+    <li> <a href="/discipline/{{ disc.pk }}/"> {{ disc.name }} </a>	</li>
+{% endfor %}
+
+</ul>
+{% endblock %}
+
+{% block body_block %}
+
+<img src={% static "media/vinter.jpg" %} width="555px">
+
+{% endblock %}

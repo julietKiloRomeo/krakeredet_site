@@ -54,17 +54,21 @@ class Tournament(models.Model):
             # find all Point objects in standings
             all_p = Points.objects.filter(standings = s).order_by('-points')
             # and int a dict for this discipline
-            tournament[s.discipline.name]={}
+            tournament[s.discipline.name]=[]
             # loop over participants
             for p in all_p:
                 # put participants score in discipline field
-                tournament[s.discipline.name][p.name] = {'points':p.points,'score':p.score}
+                tournament[s.discipline.name].append({'points':p.points,'score':p.score, 'pk':p.user.pk, 'name':p.user.name})
                 # also add points in this discipline to totals
                 if p.user.name in tournament['total'].keys():
                     tournament['total'][p.user.name]['points'] += p.points 
                 else:
                     tournament['total'][p.user.name] = {'points':p.points}
                     tournament['total'][p.user.name]['points'] = p.points 
+        tmp = []
+        for name in tournament['total'].keys():
+            tmp.append({'points':tournament['total'][name]['points'], 'name':name})
+        tournament['total'] = tmp
         return tournament
 
 class Standings(models.Model):

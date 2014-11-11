@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'tournament_list.html' %}
 
 
 
 
 {% block usermenu %}login{% endblock %}
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> &middot; {{comp.date}}{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> &middot; {{comp.date|lower}}{% endblock %}
 
 
 {% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
@@ -17,9 +17,9 @@
 			<tr>  <th>Name</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
-			{% for name_score in total|dictsortreversed:"points" %}
+			{% for participant in standings.total|dictsortreversed:"points" %}
 				<tr>
-   		<td> {{name_score.name}} </td><td>{{name_score.points}}</td>
+   		<td> {{participant.name}} </td><td>{{participant.points}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>
@@ -27,21 +27,37 @@
 
 
 
-		{% for discipline, scores in tournament.items %}
+		{% for discipline, scores in standings.items %}
+		{% if discipline == "total" %}
+		{% else %}
    		
 			<table>
-   		<caption> <a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{scores.1.standings.discipline.name}}</a></caption>
+   		<caption> <a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{discipline}}</a></caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
-			{% for point in scores %}
+			{% for participant in scores|dictsortreversed:"points" %}
 				<tr>
-   		<td> <a href="/user/{{ point.user.pk }}/">{{point.user.name}} </a> </td><td>{{point.points}}</td><td>{{point.score}}</td>
+   		<td> <a href="/user/{{ score.pk }}/">{{participant.name}} </a> </td><td>{{participant.points}}</td><td>{{participant.score}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>
 			</table>   		
-   		
+		{% endif %}
+
 		{% endfor %}
 {% endblock %}
+
+{% block nav_block %}
+<ul>
+		{% for discipline, scores in standings.items %}
+		{% if discipline == "total" %}
+		{% else %}
+   		<li><a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{discipline}}</a></li>
+		{% endif %}
+
+		{% endfor %}
+		</ul>
+{% endblock %}
+

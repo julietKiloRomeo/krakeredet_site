@@ -2,12 +2,24 @@
 
 
 {% block usermenu %}login{% endblock %}
-{% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name }}{% endblock %}
+{% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
 
 
 {% block title %}{{ user.name }}|{{ user.level_name }}{% endblock %}
 
 {% block body_block %}
+
+
+Wins : {{wins}}<br>
+
+{% for discipline in avg_pts|dictsortreversed:"avg_pts" %}
+{% if forloop.first %}
+	Best discipline :{{ discipline.discipline }}<br>
+{% endif %}
+{% if forloop.last %}
+	Worst discipline :{{ discipline.discipline }}<br><br>
+{% endif %}
+{% endfor %}
 
 
 {% for discipline, scores in results.items %}

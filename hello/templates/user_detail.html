@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'user_list.html' %}
 
 
 {% block usermenu %}login{% endblock %}
@@ -8,6 +8,18 @@
 {% block title %}{{ user.name }}|{{ user.level_name }}{% endblock %}
 
 {% block body_block %}
+
+
+Wins : {{wins}}<br>
+
+{% for discipline in avg_pts|dictsortreversed:"avg_pts" %}
+{% if forloop.first %}
+	Best discipline :{{ discipline.discipline }}<br>
+{% endif %}
+{% if forloop.last %}
+	Worst discipline :{{ discipline.discipline }}<br><br>
+{% endif %}
+{% endfor %}
 
 
 {% for discipline, scores in results.items %}

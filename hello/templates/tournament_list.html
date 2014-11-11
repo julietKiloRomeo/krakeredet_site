@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block usermenu %}login{% endblock %}
 {% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> {% endblock %}
@@ -6,12 +7,18 @@
 
 {% block title %}Konkurranser{% endblock %}
 
-{% block body_block %}
+{% block nav_block %}
 <ul>
 
 {% for comp in comps %}
-    <li> <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} | {{ comp.date }} </a>	</li>
+    <li> <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} <br> {{ comp.date }} </a>	</li>
 {% endfor %}
 
 </ul>
+{% endblock %}
+
+{% block body_block %}
+
+<img src={% static "media/jkr.jpg" %} width="555px">
+
 {% endblock %}

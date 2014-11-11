@@ -6,37 +6,24 @@
 
 
 <html>
-    <head>
-{% block usermenu %}{% endblock %} | {% block navmenu %}{% endblock %}
-<div style="position: relative; left: 250px; top: 50px;">
-<h1>{% block title %}{% endblock %}</h1>
-</div>
-<div style="position: relative; left: 750px; top: -50px;">
-	<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
-</div>        
-    </head>
+<head>
+	{% block usermenu %}{% endblock %} | {% block navmenu %}{% endblock %}
 
-    <body>
-        <div style="position: relative; left: 150px; top: 100px;">
-            {% block body_block %}{% endblock %}
-        </div>
+	<div id="title">
+		<h1>{% block title %}{% endblock %}</h1>
+	</div>
 
-<!--
-        <hr />
-        <div>
-            <ul>
-            {% if user.is_authenticated %}
-                <li><a href="/rango/restricted/">Restricted Page</a></li>
-                <li><a href="/rango/logout/">Logout</a></li>
-                <li><a href="/rango/add_category/">Add a New Category</a></li>
-            {% else %}
-                <li><a href="/rango/register/">Register Here</a></li>
-                <li><a href="/rango/login/">Login</a></li>
-            {% endif %}
+	<div id="logo">
+		<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
+	</div>        
+</head>
 
-                <li><a href="/about/">About</a></li>
-            </ul>
-        </div>
--->
-    </body>
+<body>
+	<div id="nav">
+      {% block nav_block %}{% endblock %}
+   </div>
+	<div id="body">
+      {% block body_block %}{% endblock %}
+   </div>
+</body>
 </html>

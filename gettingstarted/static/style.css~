@@ -44,7 +44,38 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  font-weight: demi;
+    color: #000000;
 }
+
+#title {    
+   text-align:center;
+   padding:5px;
+   width:700px;
+   position:relative;
+   top: 50px;
+   left: 0px;
+   }
+
+#logo {    
+   position:relative;
+   top: -50px;
+   left: 700px;
+   }
+
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:250px;
+    float:left;
+    padding:5px;
+}
+#body {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+
+
 
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 
 {% block usermenu %}login{% endblock %}
 {% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a>{% endblock %}
@@ -7,7 +7,7 @@
 
 {% block title %}Kråker{% endblock %}
 
-{% block body_block %}
+{% block nav_block %}
 
 
 <ul>
@@ -18,5 +18,11 @@
 </ul>
 
 
+
+{% endblock %}
+
+{% block body_block %}
+
+<img src={% static "media/brederen.jpg" %} width="555px">
 
 {% endblock %}
