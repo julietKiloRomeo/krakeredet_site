@@ -8,17 +8,17 @@
 {% block title %}Konkurranser{% endblock %}
 
 {% block nav_block %}
-<ul>
+
+<img src={% static "media/jkr.jpg" %} width="1650px">
+
 
 {% for comp in comps %}
-    <li> <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} <br> {{ comp.date }} </a>	</li>
+<div  id="test"  >  <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} <br> {{ comp.date }} </a>	</div>
 {% endfor %}
 
-</ul>
 {% endblock %}
 
 {% block body_block %}
 
-<img src={% static "media/vinter.jpg" %} width="555px">
 
 {% endblock %}

@@ -8,14 +8,18 @@
 {% block title %}Kråker{% endblock %}
 
 {% block nav_block %}
+<div>
+<img src={% static "media/brederen.jpg" %} width="1650px">
 
-
-<ul>
 {% for user in users %}
 
-  <li><a href="/user/{{ user.pk }}/">{{user.name}} </a> </li>
+  <div  id="test"  ><a href="/user/{{ user.pk }}/">{{user.name}} </a> </div>
 {% endfor %}
-</ul>
+
+
+</div>
+
+
 
 
 
@@ -23,6 +27,5 @@
 
 {% block body_block %}
 
-<img src={% static "media/brederen.jpg" %} width="555px">
 
 {% endblock %}
