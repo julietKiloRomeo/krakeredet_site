@@ -9,13 +9,14 @@
 
 {% block nav_block %}
 <div>
-<img src={% static "media/brederen.jpg" %} width="1650px">
 
 {% for user in users %}
 
   <div  id="test"  ><a href="/user/{{ user.pk }}/">{{user.name}} </a> </div>
 {% endfor %}
-
+<div class="bg">
+<img src={% static "media/brederen.jpg" %} width="1650px">
+</div>
 
 </div>
 

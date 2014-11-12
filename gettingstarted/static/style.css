@@ -88,18 +88,26 @@ a:hover {
 
 #test {    
    position:relative;
-   top: -600px;
+   top: 250px;
    left:50px;
-    height:40px;
-    line-height:40px;
-    width:200px;
-    background: #ffffff;
-    opacity: 0.5;
+   height:40px;
+   line-height:40px;
+   width:200px;
+   background: #ffffff;
+   opacity: 0.5;
    text-align:center;
    padding:5px;
    outline-width:5px;
 	margin: 15px;
    }
 
+
+.bg {    
+   position:absolute;
+   top: -0px;
+   left:0px;
+   opacity: 0.8;
+   z-index:-1;
+   }
 
 

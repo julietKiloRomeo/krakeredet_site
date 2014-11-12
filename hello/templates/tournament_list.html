@@ -9,13 +9,14 @@
 
 {% block nav_block %}
 
-<img src={% static "media/jkr.jpg" %} width="1650px">
 
 
 {% for comp in comps %}
 <div  id="test"  >  <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }}  {{ comp.date }} </a>	</div>
 {% endfor %}
-
+<div class="bg">
+<img src={% static "media/jkr.jpg" %} width="1650px">
+</div>
 {% endblock %}
 
 {% block body_block %}

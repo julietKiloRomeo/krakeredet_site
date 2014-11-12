@@ -8,12 +8,15 @@
 {% block title %}Disipliner{% endblock %}
 
 {% block nav_block %}
-<img src={% static "media/vinter.jpg" %} width="1650px">
 
 
 {% for disc in disciplines %}
 <div  id="test"  >  <a href="/discipline/{{ disc.pk }}/"> {{ disc.name }} </a>	</div>
 {% endfor %}
+
+<div class="bg">
+<img src={% static "media/vinter.jpg" %} width="1650px">
+</div>
 
 {% endblock %}
 
