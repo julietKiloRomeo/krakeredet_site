@@ -35,6 +35,20 @@ class Discipline(models.Model):
     def __unicode__(self):
         return self.name
 
+    def record(self):
+        cache_key = 'disc_record' + str(self.pk)
+        cache_time = 1800 # time to live in seconds
+        record = cache.get(cache_key)
+        if not record:
+            best_point = Points.objects.filter(standings__discipline = self).order_by('-score')[0]
+            record = best_point.score
+            cache.set(cache_key, record, cache_time)
+
+        return record
+
+
+
+
 
 class Tournament(models.Model):
     created                 = models.DateTimeField('date created', auto_now_add=True)
@@ -44,8 +58,6 @@ class Tournament(models.Model):
         return self.name + ' ' + self.date.strftime('%d %B %y')
         
     def totals(self):
-        
-        
         cache_key = 'comp_totals' + str(self.pk)
         cache_time = 1800 # time to live in seconds
         tournament = cache.get(cache_key)

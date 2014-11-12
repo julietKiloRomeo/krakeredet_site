@@ -70,7 +70,7 @@ a:hover {
 
 #topnav {    
    position:absolute;
-   right:0px;
+   left:0px;
    top:0px;
    z-index:11;
    }
@@ -126,3 +126,11 @@ a:hover {
    overflow: hidden;
    }
 
+span {
+    background-color: #888888;
+    display: block;
+    color: #eeeeee;
+    font-weight: bold;
+    padding: 2 2 2 5px;
+    white-space: nowrap;
+  }

@@ -28,11 +28,13 @@ def user_detail(request, idx):
     # init best results
     best_results = {}
     avg_pts = []
+    records = {}
     # populate best results
     disciplines = Discipline.objects.all()
     for d in disciplines:
         disc_query = Points.objects.filter(user=this_user).filter(standings__discipline=d)
         best_results[d.name] = disc_query.order_by('-score')[0:3]
+        records[d.name] = d.record()
         disc_avg = disc_query.aggregate(Avg('points'))
         avg_pts.append({ 'discipline':d.name, 'avg_pts': disc_avg['points__avg'] })
     # populate tournament placements
@@ -44,7 +46,7 @@ def user_detail(request, idx):
         if winner['name']==this_user.name:
             wins += 1
     
-    return render(request, 'user_detail.html', {'user': this_user, 'results':best_results, 'wins':wins, 'avg_pts':avg_pts, 'users': users})
+    return render(request, 'user_detail.html', {'user': this_user, 'results':best_results, 'wins':wins, 'avg_pts':avg_pts, 'users': users, 'records': records})
 
 def tournament_detail(request, idx):
     # fetch tournament

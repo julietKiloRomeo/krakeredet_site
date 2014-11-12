@@ -1,5 +1,5 @@
 {% extends 'user_list.html' %}
-
+{% load hello_extras %}
 
 {% block usermenu %}login{% endblock %}
 {% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
@@ -25,11 +25,9 @@ Wins : {{wins}}<br>
 
 {% for discipline, scores in results.items %}
 
-{{discipline}}
+<h3>{{discipline}}</h3>
 {% for s in scores %}
-<ul>
-  <li>{{s.score}}</li>
-</ul>
+<span style="width: {% widthratio s.score records|lookup:discipline 100 %}%"> {{s.score}} </span>
 {% endfor %}
 
 
