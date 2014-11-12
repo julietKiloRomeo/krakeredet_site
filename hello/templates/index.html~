@@ -9,15 +9,14 @@
 
 {% block nav_block %}
 
-<div id="container">
+
 <div  id="test"  > <a href="/user/"> Kråker </a>   </div>
 <div  id="test"  > <a href="/tournament/"> Konkurranser </a>   </div>
 <div  id="test"  > <a href="/discipline/"> Disipliner </a>  </div>
 <div class="bg">
-<img src={% static "media/vansjo_1.jpg" %} width="1650px">
+<img src={% static "media/vansjo_1.jpg" %} >
 </div>
 
-</div>
 
 
 {% endblock %}

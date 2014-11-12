@@ -7,15 +7,18 @@
 
 <html>
 <head>
-	{% block usermenu %}{% endblock %} | {% block navmenu %}{% endblock %}
+	<div id="topnav">
+		{% block usermenu %}{% endblock %} | {% block navmenu %}{% endblock %}
+	</div>
 
 	<div id="title">
 		<h1>{% block title %}{% endblock %}</h1>
-	</div>
 
-	<div id="logo">
-		<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
-	</div>        
+		<div id="logo">
+			<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
+		</div>        
+	</div>
+	
 </head>
 
 <body>
