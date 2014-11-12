@@ -9,7 +9,7 @@
 
 {% block nav_block %}
 
-<div>
+<div id="container">
 <div  id="test"  > <a href="/user/"> Kråker </a>   </div>
 <div  id="test"  > <a href="/tournament/"> Konkurranser </a>   </div>
 <div  id="test"  > <a href="/discipline/"> Disipliner </a>  </div>

@@ -70,9 +70,9 @@ a:hover {
 
 #nav {
     width:100%;
-   position:relative;
-   top: -250px;
-   left: -10px;
+   position:absolute;
+   top: 0px;
+   left: 0px;
 }
 
 #body {
@@ -102,7 +102,7 @@ a:hover {
    }
 
 
-#bg {    
+.bg {    
    position:absolute;
    top: -0px;
    left:0px;
@@ -110,4 +110,9 @@ a:hover {
    z-index:-1;
    }
 
+#container {    
+   position:absolute;
+   top: -0px;
+   left:0px;
+   }
 
