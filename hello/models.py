@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.cache import cache
-import time
 
 # Create your models here.
 class Greeting(models.Model):
@@ -51,7 +50,6 @@ class Tournament(models.Model):
         cache_time = 1800 # time to live in seconds
         tournament = cache.get(cache_key)
         if not tournament:
-            time.sleep(5.5)
             standings = Standings.objects.filter(tournament=self)
             # init dict for tournament data
             tournament = {}
