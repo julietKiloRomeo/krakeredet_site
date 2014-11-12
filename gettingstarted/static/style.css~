@@ -132,5 +132,6 @@ span {
     color: #eeeeee;
     font-weight: bold;
     padding: 2 2 2 5px;
+    margin: 2px;
     white-space: nowrap;
   }
