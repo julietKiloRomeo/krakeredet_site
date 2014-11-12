@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.core.cache import cache
+import time
 
 # Create your models here.
 class Greeting(models.Model):
@@ -44,31 +45,40 @@ class Tournament(models.Model):
         return self.name + ' ' + self.date.strftime('%d %B %y')
         
     def totals(self):
-        standings = Standings.objects.filter(tournament=self)
-        # init dict for tournament data
-        tournament = {}
-        # init total field
-        tournament['total']={}
-        # loop over disciplines and populate tournament
-        for s in standings:
-            # find all Point objects in standings
-            all_p = Points.objects.filter(standings = s).order_by('-points')
-            # and int a dict for this discipline
-            tournament[s.discipline.name]=[]
-            # loop over participants
-            for p in all_p:
-                # put participants score in discipline field
-                tournament[s.discipline.name].append({'points':p.points,'score':p.score, 'pk':p.user.pk, 'name':p.user.name})
-                # also add points in this discipline to totals
-                if p.user.name in tournament['total'].keys():
-                    tournament['total'][p.user.name]['points'] += p.points 
-                else:
-                    tournament['total'][p.user.name] = {'points':p.points}
-                    tournament['total'][p.user.name]['points'] = p.points 
-        tmp = []
-        for name in tournament['total'].keys():
-            tmp.append({'points':tournament['total'][name]['points'], 'name':name})
-        tournament['total'] = tmp
+        
+        
+        cache_key = 'comp_totals' + str(self.pk)
+        cache_time = 1800 # time to live in seconds
+        tournament = cache.get(cache_key)
+        if not tournament:
+            time.sleep(5.5)
+            standings = Standings.objects.filter(tournament=self)
+            # init dict for tournament data
+            tournament = {}
+            # init total field
+            tournament['total']={}
+            # loop over disciplines and populate tournament
+            for s in standings:
+                # find all Point objects in standings
+                all_p = Points.objects.filter(standings = s).order_by('-points')
+                # and int a dict for this discipline
+                tournament[s.discipline.name]=[]
+                # loop over participants
+                for p in all_p:
+                    # put participants score in discipline field
+                    tournament[s.discipline.name].append({'points':p.points,'score':p.score, 'pk':p.user.pk, 'name':p.user.name})
+                    # also add points in this discipline to totals
+                    if p.user.name in tournament['total'].keys():
+                        tournament['total'][p.user.name]['points'] += p.points 
+                    else:
+                        tournament['total'][p.user.name] = {'points':p.points}
+                        tournament['total'][p.user.name]['points'] = p.points 
+            tmp = []
+            for name in tournament['total'].keys():
+                tmp.append({'points':tournament['total'][name]['points'], 'name':name})
+            tournament['total'] = tmp
+            cache.set(cache_key, tournament, cache_time)
+
         return tournament
 
 class Standings(models.Model):
