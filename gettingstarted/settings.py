@@ -109,10 +109,19 @@ STATIC_URL = '/static/'
 
 
 if not DEBUG:
-    AWS_STORAGE_BUCKET_NAME = os.environ['julietkiloromeo']
+    # set up S3
+    #AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    #AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = 'AKIAIWA5HUNUOJCZOONQ'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'krakeredet'
+    
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    STATIC_URL = S3_URL
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    
+    STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
 
 
 STATICFILES_DIRS = (
@@ -149,20 +158,5 @@ def get_cache():
     }
 
 CACHES = get_cache()
-
-# set up S3
-#AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-#AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_ACCESS_KEY_ID = 'AKIAIWA5HUNUOJCZOONQ'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'krakeredet'
-
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-
-
 
 
