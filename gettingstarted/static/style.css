@@ -4,7 +4,8 @@ table {
   border-collapse: collapse;
   border: 1px solid #eee;
   border-bottom: 2px solid #00cccc;
-  }
+  }  
+  
 caption {
   font-family: 'Arial';
   font-weight: bold;
@@ -12,25 +13,45 @@ caption {
   margin-left: -1px; /* Fix FF 1px issue */
     }
 
-  tr:hover {
+tr:hover {
       background: #ddffff;
       }
       
-  td {
+td {
       color: #555;
   		}
-  th, td {
+th, td {
     color: #999;
-    border: 1px solid #eee;
+    border: inherit;
     padding: 12px 35px;
     border-collapse: collapse;
   }
-  th {
+th {
     background: #00cccc;
     color: #fff;
     text-transform: uppercase;
     font-size: 12px;
   }
+
+
+table.invisible{ 
+  border-collapse: collapse;
+  border: 0px  solid #ffffff;
+  border-bottom: 0px solid #ffffff;
+  }  
+
+.table.invisible th,
+.table.invisible tr,
+.table.invisible td { 
+  border-collapse: collapse;
+  border: 0px  solid #ffffff;
+  border-bottom: 0px solid #ffffff;
+  }  
+
+
+
+
+
 
 a:link {
     color: #000000;
@@ -87,7 +108,7 @@ a:hover {
 
 #body {
    width:700px;
-   height:500px;
+   height:600px;
    position:relative;
    top: 200px;
    left: 500px;

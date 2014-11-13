@@ -40,8 +40,11 @@ class Discipline(models.Model):
         cache_time = 1800 # time to live in seconds
         record = cache.get(cache_key)
         if not record:
-            best_point = Points.objects.filter(standings__discipline = self).order_by('-score')[0]
-            record = best_point.score
+            best_point = Points.objects.filter(standings__discipline = self).order_by('-score')
+            if best_point:
+                record = best_point[0].score
+            else:
+                record = 1
             cache.set(cache_key, record, cache_time)
 
         return record

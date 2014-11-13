@@ -39,12 +39,13 @@ def user_detail(request, idx):
         avg_pts.append({ 'discipline':d.name, 'avg_pts': disc_avg['points__avg'] })
     # populate tournament placements
     comps = Tournament.objects.filter(standings__points__user=this_user).distinct()
-    wins = 0
+    wins = [0,0]
     for c in comps:
+        wins[1] += 1
         comp_podium = c.totals()['total']
         winner = max(comp_podium, key=lambda x:x['points'])
         if winner['name']==this_user.name:
-            wins += 1
+            wins[0] += 1
     
     return render(request, 'user_detail.html', {'user': this_user, 'results':best_results, 'wins':wins, 'avg_pts':avg_pts, 'users': users, 'records': records})
 

@@ -11,24 +11,39 @@
 <div id="body">
 
 
-Wins : {{wins}}<br>
+
+
+			<table class="invisible">
+
+				<tr>
+   		<td> Wins : </td><td>{{wins.0}}/{{wins.1}}</td>
+				</tr>		
+
 
 {% for discipline in avg_pts|dictsortreversed:"avg_pts" %}
 {% if forloop.first %}
-	Best discipline :{{ discipline.discipline }}<br>
+				<tr>
+   		<td> Best discipline : </td><td>{{ discipline.discipline }}</td>
+				</tr>		
 {% endif %}
 {% if forloop.last %}
-	Worst discipline :{{ discipline.discipline }}<br><br>
+				<tr>
+   		<td> Worst discipline : </td><td>{{ discipline.discipline }}</td>
+				</tr>		
 {% endif %}
 {% endfor %}
+
+			</table>   		
 
 
 {% for discipline, scores in results.items %}
 
+{% if scores %}
 <h3>{{discipline}}</h3>
 {% for s in scores %}
-<span style="width: {% widthratio s.score records|lookup:discipline 300 %}px"> {{s.score}} </span>
+<span style="width: {% widthratio s.score records|lookup:discipline 100 %}%"> {{s.score}} </span>
 {% endfor %}
+{% endif %}
 
 
 

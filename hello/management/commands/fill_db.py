@@ -45,9 +45,20 @@ class Command(BaseCommand):
                      passwordhash    = '124',
                      country         = 'DK',
                      level           = 2)
+        jon     = User(name = 'Jon',
+                     nick = '',
+                     description     = 'as ety f gn' ,
+                     height          = 180,
+                     weight          = 80.0,
+                     birthdate       = '1983-07-14',
+                     email           = 'jon@pagh.com',
+                     passwordhash    = '124',
+                     country         = 'DK',
+                     level           = 3)
         jimbo.save()                     
         brede.save()                     
         tombo.save()                     
+        jon.save()                     
         
         # disciplines       
         dart = Discipline(name = 'Dart',
@@ -56,9 +67,12 @@ class Command(BaseCommand):
                           description = 'Luftgevar')  
         kroket = Discipline(name = 'Kroket',
                           description = 'Vansjo rules')  
+        poker  = Discipline(name = 'Poker',
+                          description = "Hold 'Em")  
         dart.save()
         skydning.save()
         kroket.save()
+        poker.save()
         
         # tournaments
         comp1 = Tournament(name = 'Vansjo Open',

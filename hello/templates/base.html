@@ -42,13 +42,33 @@
 					images[i].src = preload.arguments[i]
 				}
 			}
-			preload(
+			
+			function addLoadEvent(func) {
+				var oldonload = window.onload;
+				if (typeof window.onload != 'function') {
+						window.onload = func;
+				} else {
+						window.onload = function() {
+							if (oldonload) {
+								oldonload();
+							}
+							func();
+						}
+				}
+			}
+			addLoadEvent(	preload(
 				"http://krakeredet.s3.amazonaws.com/media/crow.jpg",
-				"http://krakeredet.s3.amazonaws.com/media/vansjo_1.jpg",
+				"http://krakeredet.s3.amazonaws.com/media/vansjo.jpg",
 				"http://krakeredet.s3.amazonaws.com/media/brederen.jpg",
 				"http://krakeredet.s3.amazonaws.com/media/vinter.jpg",
 				"http://krakeredet.s3.amazonaws.com/media/jkr.jpg"
-			)
+								)
+			);			
+			
+			
+			
+			
+			
 		//--><!]]>
 	</script>
 </div>
