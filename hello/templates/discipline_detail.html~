@@ -1,4 +1,5 @@
 {% extends 'discipline_list.html' %}
+{% load staticfiles %}
 
 {% block usermenu %}login{% endblock %}
 {% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/discipline/">disipliner</a> &middot; {{discipline.name|lower}}{% endblock %}
@@ -11,6 +12,11 @@
 {% block title %}{{discipline.name}}{% endblock %}
 
 {% block body_block %}
+<div id="body">
+
+{% if discipline.image %}
+   <img src="{% static discipline.image %}" width="60%"> 
+{% endif %}
 
 {{discipline.description}}	
 
@@ -29,5 +35,5 @@
 			</table>   		
 
 
-
+</div>
 {% endblock %}

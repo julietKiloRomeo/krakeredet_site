@@ -5,18 +5,21 @@
 {% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
 
 
-{% block title %}{{ user.name }}|{{ user.level_name }}{% endblock %}
+{% block title %}{{ user.name }} | {{ user.level_name }}{% endblock %}
 
 {% block body_block %}
 <div id="body">
 
+{% if user.image %}
+<div>   <img src="{% static user.image %}" width="60%"></div> 
+{% endif %}
 
 
 
 			<table class="invisible">
 
 				<tr>
-   		<td> Wins : </td><td>{{wins.0}}/{{wins.1}}</td>
+   		<td> Wins : </td><td>{{wins.0}} / {{wins.1}}</td>
 				</tr>		
 
 
