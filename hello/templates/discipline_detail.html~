@@ -15,7 +15,9 @@
 <div id="body">
 
 {% if discipline.image %}
-   <img src="{% static discipline.image %}" width="60%"> 
+<div> 
+<img src={{discipline.image.url}} width="66%">
+</div>
 {% endif %}
 
 {{discipline.description}}	

@@ -56,22 +56,6 @@ ROOT_URLCONF = 'gettingstarted.urls'
 
 WSGI_APPLICATION = 'gettingstarted.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#            'NAME': 'krakeredet',                      # Or path to database file if using sqlite3.
-#            # The following settings are not used with sqlite3:
-#            'USER': 'jkr',
-#            'PASSWORD': 'eskadron',
-#            'HOST': 'localhost',                      # Empty for localhost through domain sockets or           '127.0.0.1' for localhost through TCP.
-#            'PORT': '',                      # Set to empty string for default.
-#    }
-#}
-
 DATABASES = {'default': dj_database_url.config(default='postgres://jkr:eskadron@localhost/krakeredet')}
 
 # Internationalization
@@ -112,8 +96,6 @@ if not DEBUG:
     # set up S3
     #AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     #AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    AWS_ACCESS_KEY_ID = 'AKIAIWA5HUNUOJCZOONQ'
-    AWS_SECRET_ACCESS_KEY = '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'
     AWS_STORAGE_BUCKET_NAME = 'krakeredet'
     AWS_PRELOAD_METADATA = True
     AWS_S3_SECURE_URLS = False       # use http instead of https
@@ -161,5 +143,3 @@ def get_cache():
     }
 
 CACHES = get_cache()
-
-
