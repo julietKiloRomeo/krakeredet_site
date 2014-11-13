@@ -27,5 +27,34 @@
    </div>
 
       {% block body_block %}{% endblock %}
+      
+      
+      
+
+
+<div class="hidden">
+	<script type="text/javascript">
+		<!--//--><![CDATA[//><!--
+			var images = new Array()
+			function preload() {
+				for (i = 0; i < preload.arguments.length; i++) {
+					images[i] = new Image()
+					images[i].src = preload.arguments[i]
+				}
+			}
+			preload(
+				"http://krakeredet.s3.amazonaws.com/media/crow.jpg",
+				"http://krakeredet.s3.amazonaws.com/media/vansjo_1.jpg",
+				"http://krakeredet.s3.amazonaws.com/media/brederen.jpg",
+				"http://krakeredet.s3.amazonaws.com/media/vinter.jpg",
+				"http://krakeredet.s3.amazonaws.com/media/jkr.jpg"
+			)
+		//--><!]]>
+	</script>
+</div>
+
+
+
+      
 </body>
 </html>

@@ -15,7 +15,7 @@
 		<h1>{% block title %}{% endblock %}</h1>
 
 		<div id="logo">
-			<a>  <a href="/"> <img src={% static "media/crow.jpg" %} width="120"></a>   
+			<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
 		</div>        
 	</div>
 	

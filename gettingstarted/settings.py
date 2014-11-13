@@ -115,6 +115,9 @@ if not DEBUG:
     AWS_ACCESS_KEY_ID = 'AKIAIWA5HUNUOJCZOONQ'
     AWS_SECRET_ACCESS_KEY = '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'
     AWS_STORAGE_BUCKET_NAME = 'krakeredet'
+    AWS_PRELOAD_METADATA = True
+    AWS_S3_SECURE_URLS = False       # use http instead of https
+    AWS_QUERYSTRING_AUTH = False     # don't add complex authentication-related query 
     
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
