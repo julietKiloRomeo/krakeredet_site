@@ -12,13 +12,13 @@
 <div id="body">
 
 {% if user.image %}
-<div> 
-<img src={{user.image.url}} width="66%">
+<div style="float:right; width:33%; margin:15px;"> 
+<img src={{user.image.url}} width="100%">
 </div>
 {% endif %}
 
 
-
+<div style="float:left">
 			<table class="invisible">
 
 				<tr>
@@ -41,7 +41,9 @@
 
 			</table>   		
 
+</div>
 
+<div style="clear:both;">
 {% for discipline, scores in results.items %}
 
 {% if scores %}
@@ -54,5 +56,8 @@
 
 
 {% endfor %}
+</div>
+
+
 </div>
 {% endblock %}

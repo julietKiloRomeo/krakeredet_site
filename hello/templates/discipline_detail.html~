@@ -15,26 +15,30 @@
 <div id="body">
 
 {% if discipline.image %}
-<div> 
-<img src={{discipline.image.url}} width="66%">
+<div style="float:right; width:25%; margin:10px;"> 
+	<img src={{discipline.image.url}} width="100%">
 </div>
 {% endif %}
 
-{{discipline.description}}	
-
+<div style="float:left">
 			<table>
-   		<caption> Top 5</caption>
-			<thead>
-			<tr>  <th>Name</th> <th>Score</th> <th>Date</th> </tr>			
-			</thead>
-			<tbody>
-			{% for record in top_5 %}
-				<tr>
-   		<td> <a href="/user/{{ record.user.pk }}/">{{record.user.name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date}}</td>
-				</tr>		
-			{% endfor %}
-			</tbody>
+	   			<caption> Top 5</caption>
+					<thead>
+						<tr>  <th>Name</th> <th>Score</th> <th>Date</th> </tr>			
+					</thead>
+					<tbody>
+					{% for record in top_5 %}
+						<tr>
+   						<td> <a href="/user/{{ record.user.pk }}/">{{record.user.name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date}}</td>
+						</tr>		
+					{% endfor %}
+				</tbody>
 			</table>   		
+</div>
+
+<div style="clear:both;">
+{{discipline.description}}
+</div>
 
 
 </div>
