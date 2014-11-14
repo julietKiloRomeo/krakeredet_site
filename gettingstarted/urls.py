@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', hello.views.index, name='index'),
-    url(r'^db', hello.views.db, name='db'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tournament/([0-9]*?)/$', hello.views.tournament_detail),
     url(r'^tournament/$', hello.views.tournament_list),

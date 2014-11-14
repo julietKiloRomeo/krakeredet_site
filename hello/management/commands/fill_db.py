@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from hello.models import User, Points, Tournament, Discipline, Standings
-import datetime
+from hello.models import Profile, Points, Tournament, Discipline, Standings
+from django.contrib.auth.models import User
 
 class Command(BaseCommand):
     args = '<poll_id poll_id ...>'
@@ -14,17 +14,19 @@ class Command(BaseCommand):
         Discipline.objects.all().delete()
         
         
-        # users        
-        jimbo = User(name = 'Jimmy',
-                     nick = 'Jimbo',
+        # users
+        jimbo = User.objects.get(name='jkr')        
+        jimbo_prof = User(nick = 'Jimbo',
                      description     = 'qwe' ,
                      height          = 183,
                      weight          = 90.0,
                      birthdate       = '1979-09-19',
-                     email           = 'jimmy.kjaersgaard@gmail.com',
-                     passwordhash    = '123',
                      country         = 'DK',
-                     level           = 2)
+                     level           = 2,
+                     user            = jimbo)
+        jimbo_prof.save()
+
+        jimbo = User.objects.create_user('Jimmy', 'jimmy.kjaersgaard@gmail.com', 'eskadron')        
         brede = User(name = 'Thomas',
                      nick = 'Brederen',
                      description     = 'qwe' ,

@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Avg
-from .models import Greeting
 
-from models import User, Tournament, Standings, Discipline, Points
+from models import Profile, Tournament, Discipline, Points
 
 # Create your views here.
 def index(request):
@@ -14,7 +13,7 @@ def tournament_list(request):
     return render(request, 'tournament_list.html', {'comps': comps})
 
 def user_list(request):
-    users = User.objects.all()
+    users = Profile.objects.all()
     return render(request, 'user_list.html', {'users': users})
 
 def discipline_list(request):
@@ -23,8 +22,8 @@ def discipline_list(request):
 
 def user_detail(request, idx):
     # fetch user
-    users = User.objects.all()
-    this_user = User.objects.get(pk=idx)
+    users = Profile.objects.all()
+    this_user = Profile.objects.get(pk=idx)
     # init best results
     best_results = {}
     avg_pts = []
@@ -66,11 +65,3 @@ def discipline_detail(request, idx):
     
     return render(request, 'discipline_detail.html',{'discipline':disc, 'top_5':top_5, 'disciplines':disciplines})
 
-def db(request):
-
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, 'db.html', {'greetings': greetings})

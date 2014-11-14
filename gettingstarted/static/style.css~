@@ -1,6 +1,6 @@
 table {
   font-family: 'Arial';
-  margin: 15px;
+  margin: 5px;
   border-collapse: collapse;
   border: 1px solid #eee;
   border-bottom: 2px solid #00cccc;
@@ -94,6 +94,7 @@ a:hover {
    left:0px;
    top:0px;
    z-index:11;
+   margin:5px;
    }
 
 

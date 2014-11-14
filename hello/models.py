@@ -1,28 +1,22 @@
 from django.db import models
 from django.core.cache import cache
+from django.contrib.auth.models import User
 
-# Create your models here.
-class Greeting(models.Model):
-    when = models.DateTimeField('date created', auto_now_add=True)
-    
-
-class User(models.Model):
+class Profile(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
-    name            = models.CharField(max_length=200)
     nick            = models.CharField(max_length=200)
     image           = models.ImageField(upload_to='./media/', blank=True, null=True)
     description     = models.TextField()
     height          = models.IntegerField()
     weight          = models.FloatField()
     birthdate       = models.DateField()
-    email           = models.EmailField()
-    passwordhash    = models.CharField(max_length=200)
     country         = models.CharField(max_length=200)
     level           = models.IntegerField()
+    user            = models.OneToOneField(User)
     
     
     def __unicode__(self):
-        return self.name
+        return self.user.first_name
     def level_name(self):
         names = [u'Kj\xf8tmeis',u'Kr\xe5ke',u'\xd8rn',u'F\xf8nix']
         return names[self.level - 1]
