@@ -73,13 +73,13 @@ class Tournament(models.Model):
                 # loop over participants
                 for p in all_p:
                     # put participants score in discipline field
-                    tournament[s.discipline.name].append({'points':p.points,'score':p.score, 'pk':p.user.pk, 'name':p.user.name})
+                    tournament[s.discipline.name].append({'points':p.points,'score':p.score, 'pk':p.user.pk, 'name':p.user.first_name, 'disc':s.discipline})
                     # also add points in this discipline to totals
-                    if p.user.name in tournament['total'].keys():
-                        tournament['total'][p.user.name]['points'] += p.points 
+                    if p.user.first_name in tournament['total'].keys():
+                        tournament['total'][p.user.first_name]['points'] += p.points 
                     else:
-                        tournament['total'][p.user.name] = {'points':p.points}
-                        tournament['total'][p.user.name]['points'] = p.points 
+                        tournament['total'][p.user.first_name] = {'points':p.points}
+                        tournament['total'][p.user.first_name]['points'] = p.points 
             tmp = []
             for name in tournament['total'].keys():
                 tmp.append({'points':tournament['total'][name]['points'], 'name':name})

@@ -10,6 +10,7 @@
 {% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
 
 {% block body_block %}
+<div id="body">
 
 			<table>
    		<caption> Total </caption>
@@ -32,14 +33,14 @@
 		{% else %}
    		
 			<table>
-   		<caption> <a href="/discipline/{{ scores.1.standings.discipline.pk }}/">{{discipline}}</a></caption>
+   		<caption> <a href="/discipline/{{ scores.1.pk }}/">{{discipline}}</a></caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
 			{% for participant in scores|dictsortreversed:"points" %}
 				<tr>
-   		<td> <a href="/user/{{ score.pk }}/">{{participant.name}} </a> </td><td>{{participant.points}}</td><td>{{participant.score}}</td>
+   		<td> <a href="/user/{{ participant.pk }}/">{{participant.name}} </a> </td><td>{{participant.points}}</td><td>{{participant.score}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>
@@ -47,6 +48,7 @@
 		{% endif %}
 
 		{% endfor %}
+		</div>
 {% endblock %}
 
 

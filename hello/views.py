@@ -23,7 +23,7 @@ def discipline_list(request):
 def user_detail(request, idx):
     # fetch user
     users = Profile.objects.all()
-    this_user = Profile.objects.get(pk=idx)
+    this_user = Profile.objects.get(user__pk=idx)
     # init best results
     best_results = {}
     avg_pts = []
@@ -43,7 +43,7 @@ def user_detail(request, idx):
         wins[1] += 1
         comp_podium = c.totals()['total']
         winner = max(comp_podium, key=lambda x:x['points'])
-        if winner['name']==this_user.name:
+        if winner['name']==this_user.user.first_name:
             wins[0] += 1
     
     return render(request, 'user_detail.html', {'user': this_user, 'results':best_results, 'wins':wins, 'avg_pts':avg_pts, 'users': users, 'records': records})

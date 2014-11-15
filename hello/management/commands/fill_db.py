@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from hello.models import Profile, Points, Tournament, Discipline, Standings
+from hello.models import Points, Tournament, Discipline, Standings
 from django.contrib.auth.models import User
 
 class Command(BaseCommand):
@@ -8,73 +8,30 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         Points.objects.all().delete()
-        User.objects.all().delete()
         Standings.objects.all().delete()
         Tournament.objects.all().delete()
-        Discipline.objects.all().delete()
         
-        
-        # users
-        jimbo = User.objects.get(name='jkr')        
-        jimbo_prof = User(nick = 'Jimbo',
-                     description     = 'qwe' ,
-                     height          = 183,
-                     weight          = 90.0,
-                     birthdate       = '1979-09-19',
-                     country         = 'DK',
-                     level           = 2,
-                     user            = jimbo)
-        jimbo_prof.save()
-
-        jimbo = User.objects.create_user('Jimmy', 'jimmy.kjaersgaard@gmail.com', 'eskadron')        
-        brede = User(name = 'Thomas',
-                     nick = 'Brederen',
-                     description     = 'qwe' ,
-                     height          = 180,
-                     weight          = 90.0,
-                     birthdate       = '1983-09-19',
-                     email           = 'bredesens@gmail.com',
-                     passwordhash    = '124',
-                     country         = 'NO',
-                     level           = 4)
-        tombo = User(name = 'Tommy',
-                     nick = 'Bro',
-                     description     = 'rty' ,
-                     height          = 200,
-                     weight          = 100.0,
-                     birthdate       = '1983-06-14',
-                     email           = 'tommy.rasmussen@gmail.com',
-                     passwordhash    = '124',
-                     country         = 'DK',
-                     level           = 2)
-        jon     = User(name = 'Jon',
-                     nick = '',
-                     description     = 'as ety f gn' ,
-                     height          = 180,
-                     weight          = 80.0,
-                     birthdate       = '1983-07-14',
-                     email           = 'jon@pagh.com',
-                     passwordhash    = '124',
-                     country         = 'DK',
-                     level           = 3)
-        jimbo.save()                     
-        brede.save()                     
-        tombo.save()                     
-        jon.save()                     
         
         # disciplines       
-        dart = Discipline(name = 'Dart',
-                          description = 'Mickey Mouse')  
-        skydning = Discipline(name = 'Skydning',
-                          description = 'Luftgevar')  
-        kroket = Discipline(name = 'Kroket',
-                          description = 'Vansjo rules')  
-        poker  = Discipline(name = 'Poker',
-                          description = "Hold 'Em")  
-        dart.save()
-        skydning.save()
-        kroket.save()
-        poker.save()
+#        Discipline.objects.all().delete()
+#        dart = Discipline(name = 'Dart',
+#                          description = 'Mickey Mouse')  
+#        skydning = Discipline(name = 'Skydning',
+#                          description = 'Luftgevar')  
+#        kroket = Discipline(name = 'Kroket',
+#                          description = 'Vansjo rules')  
+#        poker  = Discipline(name = 'Poker',
+#                          description = "Hold 'Em")  
+#        dart.save()
+#        skydning.save()
+#        kroket.save()
+        
+#        poker.save()
+        
+        
+        dart     = Discipline.objects.get(name='Dart')        
+        skydning = Discipline.objects.get(name='Skydning')        
+        kroket   = Discipline.objects.get(name='Kroket')        
         
         # tournaments
         comp1 = Tournament(name = 'Vansjo Open',
@@ -120,6 +77,14 @@ class Command(BaseCommand):
         skyd_results3.save()            
         krok_results3.save()            
         # points
+
+
+        jimbo = User.objects.get(username = 'jkr')
+        brede = User.objects.get(username = 'tbr')
+        tombo = User.objects.get(username = 'tkr')
+        pagh  = User.objects.get(username = 'jpa')
+
+
         p = Points(points = 4, 
                    user = jimbo,
                    standings = dart_results1,
@@ -135,6 +100,13 @@ class Command(BaseCommand):
                    standings = dart_results1,
                    score = 8)
         p.save()
+        p = Points(points = 1, 
+                   user = pagh,
+                   standings = dart_results1,
+                   score = 7)
+        p.save()
+
+
 
         p = Points(points = 3, 
                    user = jimbo,
@@ -166,6 +138,11 @@ class Command(BaseCommand):
                    user = tombo,
                    standings = krok_results1,
                    score = 71)
+        p.save()
+        p = Points(points = 2, 
+                   user = pagh,
+                   standings = krok_results1,
+                   score = 65)
         p.save()
         #----------
         p = Points(points = 4, 
