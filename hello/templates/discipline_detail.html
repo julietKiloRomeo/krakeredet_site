@@ -29,7 +29,7 @@
 					<tbody>
 					{% for record in top_5 %}
 						<tr>
-   						<td> <a href="/user/{{ record.user.pk }}/">{{record.user.name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date|date:"Y"}}</td>
+   						<td> <a href="/user/{{ record.user.pk }}/">{{record.user.first_name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date|date:"Y"}}</td>
 						</tr>		
 					{% endfor %}
 				</tbody>
