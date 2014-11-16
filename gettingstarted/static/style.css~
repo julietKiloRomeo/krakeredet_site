@@ -108,15 +108,16 @@ a:hover {
 }
 
 #body {
-   width:700px;
-   height:600px;
-   position:relative;
-   top: 200px;
-   left: 500px;
+   width:40%;
+   height:60%;
+   position:absolute;
+   top: 25%;
+   left: 30%;
    background: #ffffff;
    opacity: 0.95;
    padding:15px;
    overflow-y:auto;
+  border: 1px solid #eee;
 }
 
 #test {    
@@ -136,13 +137,12 @@ a:hover {
 
 
 .bg {    
-   position:absolute;
-   top: 150px;
-   left:0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;   position:absolute;
    opacity: 0.8;
    z-index:-1;
    width:100%;
-   height:100%;
    overflow: hidden;
    }
 
