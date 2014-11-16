@@ -35,8 +35,8 @@
 			</table>   		
 </div>
 
-<div style="clear:both;">
-{{discipline.description}}
+<div style="clear:both; margin:20px;">
+{{discipline.description|safe}}
 </div>
 
 

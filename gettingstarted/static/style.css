@@ -3,7 +3,7 @@ table {
   margin: 5px;
   border-collapse: collapse;
   border: 1px solid #eee;
-  border-bottom: 2px solid #00cccc;
+  border-bottom: 2px solid #cccccc;
   }  
   
 caption {
@@ -14,7 +14,7 @@ caption {
     }
 
 tr:hover {
-      background: #ddffff;
+      background: #ffffff;
       }
       
 td {
@@ -27,7 +27,7 @@ th, td {
     border-collapse: collapse;
   }
 th {
-    background: #00cccc;
+    background: #cccccc;
     color: #fff;
     text-transform: uppercase;
     font-size: 12px;
@@ -127,7 +127,7 @@ a:hover {
    height:40px;
    line-height:40px;
    width:200px;
-   background: #ffffff;
+   background: #cccccc;
    opacity: 0.5;
    text-align:center;
    padding:5px;
