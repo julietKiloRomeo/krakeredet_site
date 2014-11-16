@@ -1,17 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block usermenu %}
-
-{% if request.user.is_authenticated %}
-	{{request.user}}
-{% else %}
-	<a href="/login/">login</a>
-{% endif %}
-{% endblock %}
-
-
-
 {% block navmenu %} <a href="/">kråkeredet</a>  {% endblock %}
 
 

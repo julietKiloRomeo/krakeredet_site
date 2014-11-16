@@ -116,7 +116,7 @@ a:hover {
    background: #ffffff;
    opacity: 0.95;
    padding:15px;
-   overflow-y:scroll;
+   overflow-y:auto;
 }
 
 #test {    
@@ -137,15 +137,12 @@ a:hover {
 
 .bg {    
    position:absolute;
-   top: 0px;
+   top: 150px;
    left:0px;
    opacity: 0.8;
    z-index:-1;
    width:100%;
    height:100%;
-   position:absolute;
-   top: 0px;
-   left: 0px;
    overflow: hidden;
    }
 

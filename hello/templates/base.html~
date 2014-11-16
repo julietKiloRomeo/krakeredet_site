@@ -7,7 +7,7 @@
 
 <html>
 <head>
-        <title>Krakeredet</title>
+   <title>Krakeredet</title>
 	<div id="topnav">
 		{% block usermenu %}
 
