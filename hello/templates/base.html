@@ -7,8 +7,17 @@
 
 <html>
 <head>
+   <title>Krakeredet</title>
 	<div id="topnav">
-		{% block usermenu %}{% endblock %} | {% block navmenu %}{% endblock %}
+		{% block usermenu %}
+
+{% if request.user.is_authenticated %}
+	<a href="/profile/{{request.user}}/">{{request.user}}</a>
+{% else %}
+	<a href="/login/">login</a>
+{% endif %}
+{% endblock %}
+ | {% block navmenu %}{% endblock %}
 	</div>
 
 	<div id="title">

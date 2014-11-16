@@ -21,6 +21,10 @@ urlpatterns = patterns('',
     url(r'^user/$', hello.views.user_list),
     url(r'^discipline/([0-9]*?)/$', hello.views.discipline_detail),
     url(r'^discipline/$', hello.views.discipline_list),
+#    url(r'^register/$', hello.views.register),
+    url(r'^login/$', hello.views.user_login),
+    url(r'^logout/$', hello.views.user_logout),
+    url(r'^profile/(.*?)/$', hello.views.profile_detail),
 
 )
 

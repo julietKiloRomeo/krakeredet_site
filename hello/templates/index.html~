@@ -1,7 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block usermenu %}login{% endblock %}
+{% block usermenu %}
+
+{% if request.user.is_authenticated %}
+	{{request.user}}
+{% else %}
+	<a href="/login/">login</a>
+{% endif %}
+{% endblock %}
+
+
+
 {% block navmenu %} <a href="/">kråkeredet</a>  {% endblock %}
 
 
@@ -14,7 +24,7 @@
 <div  id="test"  > <a href="/tournament/"> Konkurranser </a>   </div>
 <div  id="test"  > <a href="/discipline/"> Disipliner </a>  </div>
 <div class="bg">
-<img src={% static "media/vansjo_1.jpg" %} width="100%">
+<img src={% static "media/vansjo.jpg" %} width="100%">
 </div>
 
 

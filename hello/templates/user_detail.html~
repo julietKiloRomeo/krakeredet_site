@@ -6,7 +6,7 @@
 {% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
 
 
-{% block title %}{{ user.name }} | {{ user.level_name }}{% endblock %}
+{% block title %}{{ user.user.first_name }} | {{ user.level_name }}{% endblock %}
 
 {% block body_block %}
 <div id="body">

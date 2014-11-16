@@ -12,7 +12,7 @@
 
 
 {% for comp in comps %}
-<div  id="test"  >  <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }}  {{ comp.date|date:"b y" }} </a>	</div>
+<div  id="test"  >  <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} ({{ comp.date|date:"b y" }}) </a>	</div>
 {% endfor %}
 <div class="bg">
 <img src={% static "media/jkr.jpg" %} width="100%">

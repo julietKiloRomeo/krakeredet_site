@@ -116,7 +116,7 @@ a:hover {
    background: #ffffff;
    opacity: 0.95;
    padding:15px;
-   overflow-y:scroll;
+   overflow-y:auto;
 }
 
 #test {    

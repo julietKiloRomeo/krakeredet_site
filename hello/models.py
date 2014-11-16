@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
-    nick            = models.CharField(max_length=200)
+    nick            = models.CharField(max_length=200,blank=True, null=True)
     image           = models.ImageField(upload_to='./media/', blank=True, null=True)
-    description     = models.TextField()
-    height          = models.IntegerField()
-    weight          = models.FloatField()
-    birthdate       = models.DateField()
-    country         = models.CharField(max_length=200)
-    level           = models.IntegerField()
+    description     = models.TextField( blank=True, null=True)
+    height          = models.IntegerField(blank=True, null=True)
+    weight          = models.FloatField(blank=True, null=True)
+    birthdate       = models.DateField(blank=True, null=True)
+    country         = models.CharField(max_length=200,blank=True, null=True)
+    level           = models.IntegerField(blank=True, null=True)
     user            = models.OneToOneField(User)
     
     

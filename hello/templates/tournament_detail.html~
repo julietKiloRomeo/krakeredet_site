@@ -33,7 +33,7 @@
 		{% else %}
    		
 			<table>
-   		<caption> <a href="/discipline/{{ scores.1.pk }}/">{{discipline}}</a></caption>
+   		<caption> <a href="/discipline/{{ scores.1.disc.pk }}/">{{discipline}}</a></caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>

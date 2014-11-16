@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block usermenu %}<a href="/logout/">logout</a> {% endblock %}
+
+{% block navmenu %} <a href="/">kråkeredet</a>  {% endblock %}
+
+
+{% block title %}Bruker Profil{% endblock %}
+
+{% block body_block %}
+<div id="body">
+
+
+
+{% if request.user.profile.image %}
+<div style="float:right; width:33%; margin:15px;"> 
+<img src={{request.user.profile.image.url}} width="100%">
+</div>
+{% endif %}
+
+
+
+
+{{request.user.first_name}} {{request.user.last_name}}<br>
+{{request.user.profile.birthdate}}<br>
+{{request.user.profile.level_name}}<br>
+
+</div>
+
+{% endblock %}
