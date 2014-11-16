@@ -1,7 +1,6 @@
 {% extends 'discipline_list.html' %}
 {% load staticfiles %}
 
-{% block usermenu %}login{% endblock %}
 {% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/discipline/">disipliner</a> &middot; {{discipline.name|lower}}{% endblock %}
 
 
