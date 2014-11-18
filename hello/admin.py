@@ -5,6 +5,7 @@ from hello.models import Points
 from hello.models import Standings
 from hello.models import Tournament
 from hello.models import Post
+from hello.models import Fish
 
 
 from django.contrib.auth.admin import UserAdmin
@@ -29,3 +30,4 @@ admin.site.register(Points)
 admin.site.register(Standings)
 admin.site.register(Tournament)
 admin.site.register(Post)
+admin.site.register(Fish)

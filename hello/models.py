@@ -101,9 +101,25 @@ class Points(models.Model):
     score       = models.IntegerField(null=True, blank=True)
     class Meta:
         verbose_name_plural = "points"
-
+    def __unicode__(self):
+        return self.standings.discipline.name
 class Post(models.Model):
     text    = models.TextField()
     user    = models.ForeignKey(User)
     time    = models.DateTimeField()
     parent  = models.ForeignKey('self')
+
+class Fish(models.Model):
+    created     = models.DateTimeField('date created', auto_now_add=True)
+    caught      = models.DateTimeField(blank=True, null=True)
+    species     = models.CharField(max_length=200, unique=True)
+    image       = models.ImageField(upload_to='./media/', blank=True, null=True)
+    weight      = models.IntegerField(blank=True, null=True)
+    length      = models.IntegerField(blank=True, null=True)
+    lat         = models.FloatField('Latitude', blank=True, null=True)
+    lon         = models.FloatField('Longitude', blank=True, null=True)
+    points      = models.ForeignKey(Points)
+    def __unicode__(self):
+        return '%1.0fg %s' % (self.weight, self.species)
+    class Meta:
+        verbose_name_plural = "fish"

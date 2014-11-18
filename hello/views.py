@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 
-from models import Profile, Tournament, Discipline, Points
+from models import Profile, Tournament, Discipline, Points, Fish
 
 # Create your views here.
 def index(request):
@@ -31,6 +31,10 @@ def discipline_list(request):
     disciplines = Discipline.objects.all()
     return render(request, 'discipline_list.html', {'request':request,
                                                     'disciplines': disciplines})
+def fish_list(request):
+    fishes = Fish.objects.all()
+    return render(request, 'fish_list.html', {'request':request,
+                                              'fishes': fishes})
 
 def user_detail(request, username):
     # fetch user
@@ -88,6 +92,24 @@ def discipline_detail(request, name):
                                                      'discipline':disc, 
                                                      'top_5':top_5, 
                                                      'disciplines':disciplines})
+
+
+def fish_detail(request, idx):
+    fish = Fish.objects.get(pk=idx)
+    
+    return render(request, 'fish_detail.html',{'request':request,
+                                                     'fish':fish})
+
+
+
+
+
+
+
+
+
+
+
 
 #def register(request):
 #    # Like before, get the request's context.

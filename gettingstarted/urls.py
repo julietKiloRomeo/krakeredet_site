@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^login/$', hello.views.user_login),
     url(r'^logout/$', hello.views.user_logout),
     url(r'^profile/(.*?)/$', hello.views.profile_detail),
+    url(r'^fish/$', hello.views.fish_list),
+    url(r'^fish/([0-9]*?)/$', hello.views.fish_detail),
 
 )
 

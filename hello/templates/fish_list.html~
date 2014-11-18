@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fish/">fish</a> {% endblock %}
+
+
+{% block title %}Fish{% endblock %}
+
+{% block nav_block %}
+
+{% endblock %}
+
+{% block body_block %}
+	{% for fish in fishes %}
+		<div  >  <a href="/fish/{{ fish.pk }}/"> {{ fish }} </a>	</div>
+	{% endfor %}
+{% endblock %}

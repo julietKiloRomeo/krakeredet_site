@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fish/">fish</a> {% endblock %}
+
+
+{% block title %}Fish{% endblock %}
+
+
+{% block body_block %}
+
+<div id="body">
+
+
+{% if fish.image %}
+<div style="float:right; width:30%; margin:10px;"> 
+	<img src={{fish.image.url}} width="100%">
+</div>
+{% endif %}
+
+<div style="float:left;margin-bottom:20px;">
+{{ fish.weight }}g {{ fish.species }}.	
+</div>
+
+<div style="clear:both; margin:20px;">
+Fanget på GPS koordinat <a href="https://www.google.com/maps/place/{{ fish.lat }},{{ fish.lon }}/@59.4037705,10.8099957,15z">({{ fish.lat }},{{ fish.lon }})</a>.
+</div>
+
+
+
+
+
+
+</div>
+{% endblock %}
