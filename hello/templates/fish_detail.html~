@@ -23,7 +23,7 @@
 </div>
 
 <div style="clear:both; margin:20px;">
-Fanget på GPS koordinat <a href="https://www.google.com.au/maps/preview/@{{ fish.lat }},{{ fish.lon }},13z/?q={{ fish.lat }},{{ fish.lon }}">({{ fish.lat }},{{ fish.lon }})</a>.
+Fanget på GPS koordinat <a href="https://www.google.com/maps/place/{{ fish.lat }},{{ fish.lon }}/@59.4037705,10.8099957,15z">({{ fish.lat }},{{ fish.lon }})</a>.
 </div>
 
 
