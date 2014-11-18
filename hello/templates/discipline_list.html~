@@ -10,12 +10,9 @@
 
 
 {% for disc in disciplines %}
-<div  id="test"  >  <a href="/discipline/{{ disc.pk }}/"> {{ disc.name }} </a>	</div>
+<div  id="test"  >  <a href="/discipline/{{ disc.name }}/"> {{ disc.name }} </a>	</div>
 {% endfor %}
 
-<div class="bg">
-<img src={% static "media/vinter.jpg" %} width="100%">
-</div>
 
 {% endblock %}
 

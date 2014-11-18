@@ -1,11 +1,12 @@
 from django.shortcuts import render, render_to_response
 from django.db.models import Avg
-from hello.forms import UserForm, ProfileForm
+#from hello.forms import UserForm, ProfileForm
 from django.template import RequestContext
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth.models import User
 
 from models import Profile, Tournament, Discipline, Points
 
@@ -21,19 +22,20 @@ def tournament_list(request):
                                                     'comps': comps})
 
 def user_list(request):
-    users = Profile.objects.all()
+    users = User.objects.all()
     return render(request, 'user_list.html', {'request':request,
-                                              'users': users})
+                                              'users': users,
+                                              'N':len(users)})
 
 def discipline_list(request):
     disciplines = Discipline.objects.all()
     return render(request, 'discipline_list.html', {'request':request,
                                                     'disciplines': disciplines})
 
-def user_detail(request, idx):
+def user_detail(request, username):
     # fetch user
-    users = Profile.objects.all()
-    this_user = Profile.objects.get(user__pk=idx)
+    users = User.objects.all()
+    this_user = Profile.objects.get(user__username=username)
     # init best results
     best_results = {}
     avg_pts = []
@@ -76,8 +78,8 @@ def tournament_detail(request, idx):
                                                       'standings':standings,
                                                       'comps': comps})
     
-def discipline_detail(request, idx):
-    disc = Discipline.objects.get(pk=idx)
+def discipline_detail(request, name):
+    disc = Discipline.objects.get(name__iexact=name)
     disciplines = Discipline.objects.all()
     # get list of top 5 scores ever
     top_5 = Points.objects.filter(standings__discipline=disc).order_by('-score')[0:5]    

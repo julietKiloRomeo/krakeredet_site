@@ -23,7 +23,7 @@ class Profile(models.Model):
     
 class Discipline(models.Model):
     created     = models.DateTimeField('date created', auto_now_add=True)
-    name        = models.CharField(max_length=200)
+    name        = models.CharField(max_length=200, unique=True)
     image       = models.ImageField(upload_to='./media/', blank=True, null=True)
     description = models.TextField()
     def __unicode__(self):

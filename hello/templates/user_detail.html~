@@ -2,11 +2,11 @@
 {% load staticfiles %}
 {% load hello_extras %}
 
-{% block usermenu %}login{% endblock %}
+
 {% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
 
 
-{% block title %}{{ user.user.first_name }} | {{ user.level_name }}{% endblock %}
+{% block title %}{{ user.user.get_short_name }} | {{ user.level_name }}{% endblock %}
 
 {% block body_block %}
 <div id="body">
