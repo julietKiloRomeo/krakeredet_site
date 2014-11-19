@@ -155,3 +155,7 @@ span {
     margin: 2px;
     white-space: nowrap;
   }
+  
+#googleMap {height:100%;
+   z-index: 1001;
+}

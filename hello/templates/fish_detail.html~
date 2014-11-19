@@ -19,7 +19,7 @@
 {% endif %}
 
 <div style="float:left;margin-bottom:20px;">
-{{ fish.weight }}g {{ fish.species }}.	
+{{ fish.weight }}g {{ fish.species }} fanget af {{ fish.points.user.first_name }}.	
 </div>
 
 <div style="clear:both; margin:20px;">

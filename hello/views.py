@@ -33,8 +33,12 @@ def discipline_list(request):
                                                     'disciplines': disciplines})
 def fish_list(request):
     fishes = Fish.objects.all()
+    coord = []
+    for fish in fishes:
+        coord.append([fish.lat, fish.lon])
     return render(request, 'fish_list.html', {'request':request,
-                                              'fishes': fishes})
+                                              'fishes': fishes,
+                                              'coord':coord})
 
 def user_detail(request, username):
     # fetch user

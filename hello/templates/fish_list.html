@@ -14,12 +14,10 @@
 
 <div id="body">
 	{% for fish in fishes %}
-		<div  >  <a href="/fish/{{ fish.pk }}/"> {{ fish }} </a>	</div>
+		<div  >  <a href="/fish/{{ fish.pk }}/"> {{ fish }} fanget af {{ fish.points.user.first_name }}. </a>	</div>
 	{% endfor %}
 	
-	
-<div id="googleMap" style="width:500px;height:380px;"></div>	
-	
+<div id="googleMap" style="width:500px;height:380px "></div>	
 	
 </div>
 {% endblock %}

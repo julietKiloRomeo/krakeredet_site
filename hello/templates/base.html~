@@ -2,11 +2,71 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-<script language="javascript" type="text/javascript" src="{% static 'script.css' %}"></script>
-
 
 <html>
 <head>
+
+<script language="javascript" type="text/javascript" src="{% static 'script.js' %}"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDW52lAD4pNvOida_1nAr_yIQB31ukcuB0&sensor=false">
+</script>
+
+<script>
+
+var map;
+
+var coord = [[59.4012612,10.8030005],[59.4032612,10.8030005]]
+
+function initialize()
+{
+var mapProp = {
+  center:new google.maps.LatLng(59.4037705,10.8099957),
+  zoom:14,
+  mapTypeId:google.maps.MapTypeId.ROADMAP,
+  disableDefaultUI: true
+  };
+map=new google.maps.Map(document.getElementById("googleMap")
+  ,mapProp);
+  
+var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+  
+marker.setMap(map);
+}
+
+
+function addmarkers()
+{
+  
+for(i=0;i<coord.length; i++){
+myCenter=new google.maps.LatLng(coord[i][0],coord[i][1]);
+
+marker=new google.maps.Marker({
+  position:myCenter,
+  });
+  
+marker.setMap(map);
+
+}  
+
+
+}
+
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', addmarkers);
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+
    <title>Krakeredet</title>
 	<div id="topnav">
 		{% block usermenu %}
@@ -28,9 +88,6 @@
 		</div>        
 	</div>
 	
-</head>
-
-<body>
 	<div id="nav">
       {% block nav_block %}{% endblock %}
    </div>
@@ -72,10 +129,7 @@
 			}
 			addLoadEvent(	preload(
 				"http://krakeredet.s3.amazonaws.com/media/crow.jpg",
-				"http://krakeredet.s3.amazonaws.com/media/vansjo.jpg",
-				"http://krakeredet.s3.amazonaws.com/media/brederen.jpg",
-				"http://krakeredet.s3.amazonaws.com/media/vinter.jpg",
-				"http://krakeredet.s3.amazonaws.com/media/jkr.jpg"
+				"http://krakeredet.s3.amazonaws.com/media/bg.jpg"
 								)
 			);			
 			

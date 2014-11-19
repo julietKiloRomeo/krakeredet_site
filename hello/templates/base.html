@@ -2,12 +2,94 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-<script language="javascript" type="text/javascript" src="{% static 'script.css' %}"></script>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDW52lAD4pNvOida_1nAr_yIQB31ukcuB0&sensor=false">
-</script>
 
 <html>
 <head>
+
+<script language="javascript" type="text/javascript" src="{% static 'script.js' %}"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDW52lAD4pNvOida_1nAr_yIQB31ukcuB0&sensor=false">
+</script>
+
+<script>
+
+var styleArray = [
+  {
+    featureType: "all",
+    stylers: [
+      { saturation: -80 }
+    ]
+  },{
+    featureType: "road.arterial",
+    elementType: "geometry",
+    stylers: [
+      { hue: "#00ffee" },
+      { saturation: 50 }
+    ]
+  },{
+    featureType: "poi.business",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
+
+
+var map;
+
+var coord = {{coord}}
+
+function initialize()
+{
+var mapProp = {
+  center:new google.maps.LatLng(59.4037705,10.8099957),
+  zoom:14,
+  mapTypeId:google.maps.MapTypeId.ROADMAP,
+  disableDefaultUI: true
+  };
+map=new google.maps.Map(document.getElementById("googleMap")
+  ,mapProp);
+  
+var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+  
+marker.setMap(map);
+}
+
+
+function addmarkers()
+{
+  
+for(i=0;i<coord.length; i++){
+myCenter=new google.maps.LatLng(coord[i][0],coord[i][1]);
+
+marker=new google.maps.Marker({
+  position:myCenter,
+  });
+  
+marker.setMap(map);
+
+}  
+
+
+}
+
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', addmarkers);
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+
    <title>Krakeredet</title>
 	<div id="topnav">
 		{% block usermenu %}
@@ -29,9 +111,6 @@
 		</div>        
 	</div>
 	
-</head>
-
-<body>
 	<div id="nav">
       {% block nav_block %}{% endblock %}
    </div>
