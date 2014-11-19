@@ -43,10 +43,6 @@ class Discipline(models.Model):
 
         return record
 
-
-
-
-
 class Tournament(models.Model):
     created                 = models.DateTimeField('date created', auto_now_add=True)
     name                    = models.CharField(max_length=200)
@@ -102,6 +98,8 @@ class Standings(models.Model):
                 s=scores[i]
             points[i].score = s
             points.save()
+    def __unicode__(self):
+        return self.discipline.name + '-'+ self.tournament
 
 class Points(models.Model):
     user        = models.ForeignKey(User)
@@ -115,12 +113,8 @@ class Points(models.Model):
     class Meta:
         verbose_name_plural = "points"
     def __unicode__(self):
-        return self.standings.discipline.name
-        
-        
-        
-        
-        
+        return self.standings.discipline.name + ':'+ self.user.username
+
 class Post(models.Model):
     text    = models.TextField()
     user    = models.ForeignKey(User)
