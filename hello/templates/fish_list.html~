@@ -11,7 +11,10 @@
 {% endblock %}
 
 {% block body_block %}
+
+<div id="body">
 	{% for fish in fishes %}
 		<div  >  <a href="/fish/{{ fish.pk }}/"> {{ fish }} </a>	</div>
 	{% endfor %}
+</div>
 {% endblock %}

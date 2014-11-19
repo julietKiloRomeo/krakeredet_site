@@ -93,16 +93,34 @@ class Standings(models.Model):
     tournament = models.ForeignKey(Tournament)
     class Meta:
         verbose_name_plural = "standings"
+    def give_points(self):
+        points = Points.objects.filter(standings=self).order_by('-points')
+        scores = [4,2,1]
+        for i in range(len(points)):
+            s = 0
+            if i<3:
+                s=scores[i]
+            points[i].score = s
+            points.save()
 
 class Points(models.Model):
     user        = models.ForeignKey(User)
     standings   = models.ForeignKey(Standings)
     points      = models.IntegerField()
     score       = models.IntegerField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super(Points, self).save(*args, **kwargs) # Call the "real" save() method.
+        self.standings.give_points()    
     class Meta:
         verbose_name_plural = "points"
     def __unicode__(self):
         return self.standings.discipline.name
+        
+        
+        
+        
+        
 class Post(models.Model):
     text    = models.TextField()
     user    = models.ForeignKey(User)
