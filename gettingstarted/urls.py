@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^profile/(.*?)/$', hello.views.profile_detail),
     url(r'^fish/$', hello.views.fish_list),
     url(r'^fish/([0-9]*?)/$', hello.views.fish_detail),
+    url(r'^new_fish/$', hello.views.add_fish),
 
 )
 

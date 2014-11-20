@@ -7,8 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_protect
+from models import Profile, Tournament, Discipline, Points, Fish, Standings
+from django.views.decorators.csrf import csrf_exempt
 
-from models import Profile, Tournament, Discipline, Points, Fish
 
 # Create your views here.
 def index(request):
@@ -39,6 +41,59 @@ def fish_list(request):
     return render(request, 'fish_list.html', {'request':request,
                                               'fishes': fishes,
                                               'coord':coord})
+
+
+@csrf_exempt
+def add_fish(request):
+    context = RequestContext(request)
+    
+    if request.method == 'POST':
+        input_comp = request.POST.get("comp")
+        input_user = request.POST.get("user")
+        input_species = request.POST.get("species")
+        input_weight = request.POST.get("weight")
+        input_lat = float(request.POST.get("lat"))
+        input_lon = float(request.POST.get("lon"))
+        
+        user = User.objects.get(username = input_user)                
+        comp = Tournament.objects.get(pk=input_comp)
+        standings = Standings.objects.filter(tournament=comp).filter(discipline__name='Fiskning')
+        
+        if not standings:
+            disc = Discipline.objects.get(name='Fiskning')
+            standings = Standings(discipline = disc,
+                                  tournament = comp)
+            standings.save()
+        
+        p = Points(points = input_weight, 
+                   user = user,
+                   standings = standings[0],
+                   score = 4)
+        p.save()
+        
+        f = Fish(species = input_species,
+                 weight = input_weight,
+                 lat = input_lat,
+                 lon = input_lon,
+                 points=p)        
+        f.save()
+        
+        fishes = Fish.objects.all()
+        coord = []
+        for fish in fishes:
+            coord.append([fish.lat, fish.lon])
+        return render_to_response('fish_list.html', {'request':request,
+                                                  'fishes': fishes,
+                                                  'coord':coord}, context)
+
+    else:
+        comps = Tournament.objects.all()
+        users = User.objects.all()
+        return render(request, 'new_fish.html', {'request':request,
+                                              'comps': comps,
+                                              'users': users})
+
+
 
 def user_detail(request, username):
     # fetch user

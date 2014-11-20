@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fisk/">fish</a> {% endblock %}
+
+
+{% block title %}Ny Fisk{% endblock %}
+
+{% block nav_block %}
+<div style="position: absolute; top:400px;" >
+<form action="/new_fish/" method="post">
+ {% csrf_token %}
+
+<LABEL for="comp">Turnering: </LABEL>
+<select name="comp" id="comp">
+{% for comp in comps %}
+<option value={{ comp.pk }}>{{ comp }}</option>
+{% endfor %}
+</select>
+<br>
+<LABEL for="username">Brukernavn: </LABEL>
+<select name="user" id="username">
+{% for user in users %}
+<option value={{ user.username }}>{{ user.first_name }}</option>
+{% endfor %}
+</select>
+<BR>
+<LABEL for="species">Fisk: </LABEL> 
+<select name="species" id="species">
+<option value="gedde">Gedde</option>
+<option value="aborre">Aborre</option>
+<option value="sandart">Sandart</option>
+</select>
+<BR>
+<LABEL for="weight">Vægt: </LABEL> <INPUT type="text" id="weight" name="weight"><BR>
+<LABEL for="lat">Lat: </LABEL> <INPUT type="text" id="lat" name="lat"><BR>
+<LABEL for="lon">Lon: </LABEL> <INPUT type="text" id="lon" name="lon"><BR>
+
+<input type="submit" value="OK">
+</form>
+
+</div>
+{% endblock %}
+
+{% block body_block %}
+
+<div id="body">
+	
+<div id="googleMap" style="width:500px;height:380px "></div>	
+	
+</div>
+{% endblock %}

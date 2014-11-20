@@ -97,7 +97,6 @@ class Standings(models.Model):
             if i<3:
                 s=scores[i]
             points[i].score = s
-            points.save()
     def __unicode__(self):
         return self.discipline.name + '-'+ self.tournament
 
@@ -108,8 +107,9 @@ class Points(models.Model):
     score       = models.IntegerField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
+        self.standings.give_points()   
         super(Points, self).save(*args, **kwargs) # Call the "real" save() method.
-        self.standings.give_points()    
+ 
     class Meta:
         verbose_name_plural = "points"
     def __unicode__(self):

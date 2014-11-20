@@ -6,7 +6,6 @@
 <html>
 <head>
 
-<script language="javascript" type="text/javascript" src="{% static 'script.js' %}"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDW52lAD4pNvOida_1nAr_yIQB31ukcuB0&sensor=false">
 </script>
 
@@ -37,10 +36,28 @@ var styleArray = [
 
 var map;
 
+{% if coord %}
 var coord = {{coord}}
+{% endif %}
+
+
 
 function initialize()
 {
+
+function displayCoordinates(pnt) {
+
+          var lat = pnt.lat();
+          lat = lat.toFixed(4);
+          var lng = pnt.lng();
+          lng = lng.toFixed(4);
+          console.log("Latitude: " + lat + "  Longitude: " + lng);
+          document.getElementById("lat").value= lat;
+          document.getElementById("lon").value= lng;
+      };
+
+
+
 var mapProp = {
   center:new google.maps.LatLng(59.4037705,10.8099957),
   zoom:14,
@@ -49,14 +66,14 @@ var mapProp = {
   };
 map=new google.maps.Map(document.getElementById("googleMap")
   ,mapProp);
+
+google.maps.event.addListener(map, 'click', function (event) {
+              displayCoordinates(event.latLng);  });
+
   
-var marker=new google.maps.Marker({
-  position:myCenter,
-  });
-  
-marker.setMap(map);
 }
 
+google.maps.event.addDomListener(window, 'load', initialize);
 
 function addmarkers()
 {
@@ -76,9 +93,9 @@ marker.setMap(map);
 }
 
 
-
-google.maps.event.addDomListener(window, 'load', initialize);
+{% if coord %}
 google.maps.event.addDomListener(window, 'load', addmarkers);
+{% endif %}
 </script>
 
 
