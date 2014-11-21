@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_protect
 from models import Profile, Tournament, Discipline, Points, Fish, Standings
 from django.views.decorators.csrf import csrf_exempt
 
@@ -57,17 +56,20 @@ def add_fish(request):
         
         user = User.objects.get(username = input_user)                
         comp = Tournament.objects.get(pk=input_comp)
-        standings = Standings.objects.filter(tournament=comp).filter(discipline__name='Fiskning')
+        standings_query = Standings.objects.filter(tournament=comp).filter(discipline__name='Fiskning')
         
-        if not standings:
+        if not standings_query:
             disc = Discipline.objects.get(name='Fiskning')
             standings = Standings(discipline = disc,
                                   tournament = comp)
             standings.save()
+        else:
+            standings = standings_query[0]
+            
         
         p = Points(points = input_weight, 
                    user = user,
-                   standings = standings[0],
+                   standings = standings,
                    score = 4)
         p.save()
         

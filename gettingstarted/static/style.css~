@@ -127,7 +127,7 @@ a:hover {
    height:40px;
    line-height:40px;
    width:200px;
-   background: #cccccc;
+   background: #123;
    opacity: 0.5;
    text-align:center;
    padding:5px;
@@ -155,7 +155,7 @@ span {
     margin: 2px;
     white-space: nowrap;
   }
-#map-canvas {
-    height: 500px;
-    z-index: 1001;
+  
+#googleMap {height:100%;
+   z-index: 1001;
 }
