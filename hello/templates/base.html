@@ -101,13 +101,13 @@ google.maps.event.addDomListener(window, 'load', addmarkers);
 
 
 
+<title>Krakeredet</title>
 
 
 </head>
 
 <body>
 
-   <title>Krakeredet</title>
 	<div id="topnav">
 		{% block usermenu %}
 
@@ -120,12 +120,15 @@ google.maps.event.addDomListener(window, 'load', addmarkers);
  | {% block navmenu %}{% endblock %}
 	</div>
 
+		<div id="logo">
+			<a>  <a href="/"> <img src={% static "media/crow.jpg" %} width="100%"></a>   
+		</div>        
+
+
+
 	<div id="title">
 		<h1>{% block title %}{% endblock %}</h1>
 
-		<div id="logo">
-			<a>  <a href="/"> <img src={% static "media/crow.jpg" %} height="120"></a>   
-		</div>        
 	</div>
 	
 	<div id="nav">

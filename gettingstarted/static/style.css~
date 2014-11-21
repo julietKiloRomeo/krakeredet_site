@@ -52,10 +52,9 @@ table.invisible{
 
 
 
-
 a:link {
     color: #000000;
- text-decoration:none;  
+	 text-decoration:none;  
 }
 
 /* visited link */
@@ -79,20 +78,32 @@ a:hover {
    left: 0px;
    z-index:10;
    background: #ffffff;
-   opacity: 1;
+   opacity: 0;
    }
 
 #logo {    
    position:absolute;
-   right:10%;
+   left:46%;
+   width:8%;
    top:0px;
    z-index:11;
    }
+   
+
+
+#logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+   
+   
 
 #topnav {    
    position:absolute;
    left:0px;
-   top:0px;
+   top:5%;
    z-index:11;
    margin:10px;
    }
@@ -100,11 +111,12 @@ a:hover {
 
 #nav {
    width:100%;
-   height:100%;
+   height:5%;
+   background: #000;
    position:absolute;
    top: 0px;
    left: 0px;
-   overflow: hidden;
+   overflow: visible;
 }
 
 #body {
@@ -117,29 +129,30 @@ a:hover {
    opacity: 0.95;
    padding:15px;
    overflow-y:auto;
-  border: 1px solid #000;
+   border: 1px solid #000;
 }
 
-#test {    
+#menu {    
+   color: #000000;
    position:relative;
-   top: 250px;
-   left:50px;
-   height:40px;
-   line-height:40px;
-   width:200px;
-   background: #cccccc;
-   opacity: 0.5;
+   float:left;
+   height:20px;
+	font-size: 12px;
+   width:20%;
    text-align:center;
    padding:5px;
-   outline-width:5px;
 	margin: 15px;
    }
 
 
-.bg {    
-    position: fixed;
-    bottom: 0;
-    width: 100%;   position:absolute;
+
+
+
+.bg{    
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   position:absolute;
    opacity: 0.8;
    z-index:-1;
    width:100%;
@@ -155,7 +168,24 @@ span {
     margin: 2px;
     white-space: nowrap;
   }
-#map-canvas {
-    height: 500px;
-    z-index: 1001;
+  
+#googleMap {height:100%;
+   z-index: 1001;
 }
+
+
+a.topmenu:visited{
+	color:white;
+   font-size: 12px;
+}
+a.topmenu:hover{
+	color:white;
+   font-size: 12px;
+}
+a.topmenu:link{
+	color:white;
+   font-size: 12px;
+}
+
+
+
