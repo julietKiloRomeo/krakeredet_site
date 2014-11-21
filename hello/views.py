@@ -14,7 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def index(request):
     comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     return render(request, 'index.html', {'request':request,
+                                          'users': users,
+                                          'fishes': fishes,
+                                          'disciplines': disciplines,
                                           'comps': comps})
 
 def tournament_list(request):
