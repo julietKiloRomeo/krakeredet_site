@@ -36,7 +36,7 @@
 		<div  id="menu"  >
 		<div class="inner_menu">
 			<ul class="navigation">
-  				<a class="main" href="#url">Kråker</a>
+  				<a class="main" href="/user/">Kråker</a>
   				{% for user in users%}
   					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/user/{{ user }}/">{{user.first_name}}</a></li>
   				{% endfor %}
@@ -46,9 +46,9 @@
 		<div  id="menu"  >		
 		<div class="inner_menu">
 			<ul class="navigation">
-  				<a class="main" href="#url">Konkurranser</a>
+  				<a class="main" href="/tournament/">Konkurranser</a>
   				{% for comp in comps%}
-  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/discipline/{{ comp.pk }}/">{{comp}}</a></li>
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/tournament/{{ comp.pk }}/">{{comp}}</a></li>
   				{% endfor %}
 			</ul>		
    	</div>
@@ -56,7 +56,7 @@
 		<div  id="menu"  >		
 		<div class="inner_menu">
 			<ul class="navigation">
-  				<a class="main" href="#url">Disipliner</a>
+  				<a class="main" href="/discipline/">Disipliner</a>
   				{% for disc in disciplines%}
   					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/discipline/{{ disc.name|lower }}/">{{disc.name}}</a></li>
   				{% endfor %}
@@ -66,12 +66,10 @@
 		<div  id="menu"  >		
 		<div class="inner_menu">
 			<ul class="navigation">
-  				<a class="main" href="#url">Fisk</a>
-  				<li class="n1"><a href="#">item #1</a></li>
-				<li class="n2"><a href="#">item #2</a></li>
-				<li class="n3"><a href="#">item #3</a></li>
-				<li class="n4"><a href="#">item #4</a></li>
-				<li class="n5"><a href="#">item #5</a></li>
+  				<a class="main" href="/fish/">Fisk</a>
+  				{% for fish in fishes%}
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/fish/{{ fish.pk }}/">{{fish}}</a></li>
+  				{% endfor %}
 			</ul>		
    	</div>
    	</div>

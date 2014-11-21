@@ -25,26 +25,51 @@ def index(request):
 
 def tournament_list(request):
     comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     return render(request, 'tournament_list.html', {'request':request,
+                                                    'users': users,
+                                                    'fishes': fishes,
+                                                    'disciplines': disciplines,
                                                     'comps': comps})
 
 def user_list(request):
+    comps = Tournament.objects.all()
     users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     return render(request, 'user_list.html', {'request':request,
                                               'users': users,
+                                              'fishes': fishes,
+                                              'disciplines': disciplines,
+                                              'comps': comps,
                                               'N':len(users)})
 
 def discipline_list(request):
+    comps = Tournament.objects.all()
+    users = User.objects.all()
     disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     return render(request, 'discipline_list.html', {'request':request,
+                                                    'users': users,
+                                                    'fishes': fishes,
+                                                    'disciplines': disciplines,
+                                                    'comps': comps,
                                                     'disciplines': disciplines})
 def fish_list(request):
+    comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
     fishes = Fish.objects.all()
     coord = []
     for fish in fishes:
         coord.append([fish.lat, fish.lon])
     return render(request, 'fish_list.html', {'request':request,
+                                              'users': users,
                                               'fishes': fishes,
+                                              'disciplines': disciplines,
+                                              'comps': comps,
                                               'coord':coord})
 
 
@@ -105,7 +130,10 @@ def add_fish(request):
 
 def user_detail(request, username):
     # fetch user
+    comps = Tournament.objects.all()
     users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     this_user = Profile.objects.get(user__username=username)
     # init best results
     best_results = {}
@@ -134,7 +162,10 @@ def user_detail(request, username):
                                                 'results':best_results, 
                                                 'wins':wins, 
                                                 'avg_pts':avg_pts, 
-                                                'users': users, 
+                                                'users': users,
+                                                'fishes': fishes,
+                                                'disciplines': disciplines,
+                                                'comps': comps,
                                                 'records': records})
 
 def tournament_detail(request, idx):
@@ -143,19 +174,32 @@ def tournament_detail(request, idx):
     # retrieve dict with standings in eacg discipline as well as totals
     standings = comp.totals()
     comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     
     return render(request, 'tournament_detail.html', {'request':request,
                                                       'comp': comp, 
                                                       'standings':standings,
+                                                      'users': users,
+                                                      'fishes': fishes,
+                                                      'disciplines': disciplines,
                                                       'comps': comps})
     
 def discipline_detail(request, name):
     disc = Discipline.objects.get(name__iexact=name)
+    comps = Tournament.objects.all()
+    users = User.objects.all()
     disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     # get list of top 5 scores ever
     top_5 = Points.objects.filter(standings__discipline=disc).order_by('-score')[0:5]    
     
     return render(request, 'discipline_detail.html',{'request':request,
+                                                     'users': users,
+                                                     'fishes': fishes,
+                                                     'disciplines': disciplines,
+                                                     'comps': comps,
                                                      'discipline':disc, 
                                                      'top_5':top_5, 
                                                      'disciplines':disciplines})
@@ -163,9 +207,17 @@ def discipline_detail(request, name):
 
 def fish_detail(request, idx):
     fish = Fish.objects.get(pk=idx)
+    comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
     
     return render(request, 'fish_detail.html',{'request':request,
-                                                     'fish':fish})
+                                                'users': users,
+                                                'fishes': fishes,
+                                                'disciplines': disciplines,
+                                                'comps': comps,
+                                                'fish':fish})
 
 
 
