@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fisk/">fish</a> {% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fish/">fish</a> {% endblock %}
 
 
 {% block title %}Fisk{% endblock %}

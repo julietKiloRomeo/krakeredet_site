@@ -1,7 +1,7 @@
 {% extends 'discipline_list.html' %}
 {% load staticfiles %}
 
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/discipline/">disipliner</a> &middot; {{discipline.name|lower}}{% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/disiplin/">disipliner</a> &middot; {{discipline.name|lower}}{% endblock %}
 
 
 
@@ -28,7 +28,7 @@
 					<tbody>
 					{% for record in top_5 %}
 						<tr>
-   						<td> <a href="/user/{{ record.user.pk }}/">{{record.user.first_name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date|date:"Y"}}</td>
+   						<td> <a href="/bruker/{{ record.user.pk }}/">{{record.user.first_name}} </a> </td><td>{{record.score}}</td><td>{{record.standings.tournament.date|date:"Y"}}</td>
 						</tr>		
 					{% endfor %}
 				</tbody>

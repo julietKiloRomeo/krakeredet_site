@@ -86,7 +86,6 @@ a:hover {
    left:45%;
    width:10%;
    top:0px;
-   background: white;
    z-index:11;
    }
    
@@ -96,6 +95,10 @@ a:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border:1px solid #;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;  
 }
 
    
@@ -252,8 +255,8 @@ a:hover { color: #fff; }
   transform: perspective(350px) rotateX(-90deg);
 }
 
-.navigation li:nth-child(even) { background: #aaa;}
-.navigation li:nth-child(odd) { background: #ddd;}
+.navigation li:nth-child(even) { background: #aaa; opacity:0.8;}
+.navigation li:nth-child(odd) { background: #ddd;; opacity:0.8;}
 
 .navigation li.n1 { 
   -webkit-transition: 0.1s linear 0.4s;
@@ -262,7 +265,7 @@ a:hover { color: #fff; }
 }
 .navigation li.n2 {
   -webkit-transition: 0.1s linear 0.3s;
-  -o-transition: 0.1s linear 0.3s;
+  -o-transition: 0.1s linear 0.3s; 
   transition: 0.1s linear 0.3s;
 }
 .navigation li.n3 {

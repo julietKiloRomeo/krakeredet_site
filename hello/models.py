@@ -135,3 +135,12 @@ class Fish(models.Model):
         return '%1.0fg %s' % (self.weight, self.species)
     class Meta:
         verbose_name_plural = "fish"
+
+
+class Achievement(models.Model):
+    discipline  = models.ForeignKey(Discipline, blank=True, null=True)
+    name        = models.CharField(max_length=200)
+    description = models.TextField()
+    users       = models.ManyToManyField(User)
+    def __unicode__(self):
+        return self.name + '-'+ self.user.username

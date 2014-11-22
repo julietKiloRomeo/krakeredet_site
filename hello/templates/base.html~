@@ -21,7 +21,7 @@
 		{% block usermenu %}
 
 			{% if request.user.is_authenticated %}
-				<a href="/profile/{{request.user}}/">{{request.user}}</a>
+				<a href="/profil/{{request.user}}/">{{request.user}}</a>
 			{% else %}
 				<a href="/login/">login</a>
 			{% endif %}
@@ -38,7 +38,7 @@
 			<ul class="navigation">
   				<a class="main" href="/user/">Kråker</a>
   				{% for user in users%}
-  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/user/{{ user }}/">{{user.first_name}}</a></li>
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/bruker/{{ user }}/">{{user.first_name}}</a></li>
   				{% endfor %}
 			</ul>
 		</div>		
@@ -48,7 +48,7 @@
 			<ul class="navigation">
   				<a class="main" href="/tournament/">Konkurranser</a>
   				{% for comp in comps%}
-  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/tournament/{{ comp.pk }}/">{{comp}}</a></li>
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/turnering/{{ comp.pk }}/">{{comp}}</a></li>
   				{% endfor %}
 			</ul>		
    	</div>
@@ -58,7 +58,7 @@
 			<ul class="navigation">
   				<a class="main" href="/discipline/">Disipliner</a>
   				{% for disc in disciplines%}
-  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/discipline/{{ disc.name|lower }}/">{{disc.name}}</a></li>
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/disiplin/{{ disc.name|lower }}/">{{disc.name}}</a></li>
   				{% endfor %}
 			</ul>		
    	</div>
@@ -68,7 +68,7 @@
 			<ul class="navigation">
   				<a class="main" href="/fish/">Fisk</a>
   				{% for fish in fishes%}
-  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/fish/{{ fish.pk }}/">{{fish}}</a></li>
+  					<li class="{% cycle 'n1' 'n2' 'n3' 'n4' 'n5' %}"><a href="/fisk/{{ fish.pk }}/">{{fish}}</a></li>
   				{% endfor %}
 			</ul>		
    	</div>

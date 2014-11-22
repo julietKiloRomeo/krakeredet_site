@@ -19,7 +19,7 @@
 </select>
 <br>
 <LABEL for="username">Brukernavn: </LABEL>
-<select name="users" id="username">
+<select name="user" id="username">
 {% for user in users %}
 <option value={{ user.username }}>{{ user.first_name }}</option>
 {% endfor %}

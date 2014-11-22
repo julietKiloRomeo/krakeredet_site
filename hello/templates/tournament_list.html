@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> {% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/turnering/">konkurranser</a> {% endblock %}
 
 
 {% block title %}Konkurranser{% endblock %}
@@ -11,7 +11,7 @@
 
 
 {% for comp in comps %}
-<div  id="test"  >  <a href="/tournament/{{ comp.pk }}/"> {{ comp.name }} ({{ comp.date|date:"b y" }}) </a>	</div>
+<div  id="test"  >  <a href="/turnering/{{ comp.pk }}/"> {{ comp.name }} ({{ comp.date|date:"b y" }}) </a>	</div>
 {% endfor %}
 {% endblock %}
 

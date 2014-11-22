@@ -86,7 +86,6 @@ a:hover {
    left:45%;
    width:10%;
    top:0px;
-   background: white;
    z-index:11;
    }
    
@@ -96,6 +95,10 @@ a:hover {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border:5px solid #000;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;  
 }
 
    

@@ -11,7 +11,7 @@
 
 {% for user in users %}
 
-  <div  id="test"  > {{users.0}}{{N}}  <a href="/user/{{ user.get_username }}/">{{user.get_short_name}} </a> </div>
+  <div  id="test"  > <a href="/user/{{ user.get_username }}/">{{user.get_short_name}} </a> </div>
 {% endfor %}
 
 </div>

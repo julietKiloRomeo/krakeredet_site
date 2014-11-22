@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">disipliner</a> {% endblock %}
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/turnering/">disipliner</a> {% endblock %}
 
 
 {% block title %}Disipliner{% endblock %}
@@ -10,8 +10,8 @@
 
 
 {% for disc in disciplines %}
-<div  id="test"  >  <a href="/discipline/{{ disc.name|lower }}/"> {{ disc.name }} </a>	</div>
 {% endfor %}
+<div  id="test"  >  <a href="/disiplin/{{ disc.name|lower }}/"> {{ disc.name }} </a>	</div>
 
 
 {% endblock %}

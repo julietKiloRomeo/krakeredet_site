@@ -3,7 +3,7 @@
 {% load hello_extras %}
 
 
-{% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.name|lower }}{% endblock %}
+{% block navmenu %}<a href="/">kråkeredet</a> &middot; <a href="/user/">kråker</a> &middot; {{ user.user.get_username|lower }}{% endblock %}
 
 
 {% block title %}{{ user.user.get_short_name }} | {{ user.level_name }}{% endblock %}

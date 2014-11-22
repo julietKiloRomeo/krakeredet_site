@@ -3,8 +3,8 @@
 
 
 
-{% block usermenu %}login{% endblock %}
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/tournament/">konkurranser</a> &middot; {{comp.date|lower}}{% endblock %}
+
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/turnering/">konkurranser</a> &middot; {{comp.date|lower}}{% endblock %}
 
 
 {% block title %}{{comp.name}} | {{comp.date}}{% endblock %}
@@ -33,14 +33,14 @@
 		{% else %}
    		
 			<table>
-   		<caption> <a href="/discipline/{{ scores.1.disc.pk }}/">{{discipline}}</a></caption>
+   		<caption> <a href="/disiplin/{{ scores.1.disc.pk }}/">{{discipline}}</a></caption>
 			<thead>
 			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
 			</thead>
 			<tbody>
 			{% for participant in scores|dictsortreversed:"points" %}
 				<tr>
-   		<td> <a href="/user/{{ participant.pk }}/">{{participant.name}} </a> </td><td>{{participant.points}}</td><td>{{participant.score}}</td>
+   		<td> <a href="/bruker/{{ participant.pk }}/">{{participant.name}} </a> </td><td>{{participant.points}}</td><td>{{participant.score}}</td>
 				</tr>		
 			{% endfor %}
 			</tbody>
