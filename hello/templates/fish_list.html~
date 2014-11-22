@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fish/">fish</a> {% endblock %}
+		{% block script %}
+		{% include 'google_maps_script.html' %}
+		{% endblock %}
+
+
+
+{% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fisk/">fish</a> {% endblock %}
 
 
 {% block title %}Fisk{% endblock %}
@@ -16,11 +22,8 @@
 {% block body_block %}
 
 <div id="body">
-	{% for fish in fishes %}
-		<div  >  <a href="/fish/{{ fish.pk }}/"> {{ fish }} fanget af {{ fish.points.user.first_name }}. </a>	</div>
-	{% endfor %}
 	
-<div id="googleMap" style="width:500px;height:380px "></div>	
+<div id="googleMap" style="width:98%;height:90% "></div>	
 	
 </div>
 {% endblock %}

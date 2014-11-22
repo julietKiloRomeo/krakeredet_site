@@ -129,10 +129,9 @@ border-radius: 50%;
    top: 25%;
    left: 30%;
    background: #ffffff;
-   opacity: 0.95;
-   padding:15px;
+   opacity: 1;
    overflow-y:auto;
-   border: 1px solid #000;
+   border: 3px solid #000;
 }
 
 #menu {    
@@ -177,6 +176,7 @@ span {
   
 #googleMap {height:100%;
    z-index: 1001;
+   opacity: 1;
 }
 
 
@@ -222,7 +222,7 @@ a:hover { color: #fff; }
   display: block; 
   height: 100%;
   line-height:100%;
-  font: bold 15px/15px arial, sans-serif; 
+  font: bold 15px/40px arial, sans-serif; 
   text-align: center; 
   text-decoration: none; 
   color: #FFF;  

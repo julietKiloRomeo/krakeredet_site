@@ -4,7 +4,7 @@
 var styleArray = [{"stylers":[{"visibility":"off"}]},
 						{"featureType":"landscape",
 						"elementType":"geometry",
-						"stylers":[{"visibility":"on"},{"color":"#f9c471"}]},
+						"stylers":[{"visibility":"on"},{"color":"#e9b461"}]},
 						{"featureType":"water",
 						"stylers":[{"visibility":"on"},{"color":"#937256"}]},
 						{"featureType":"administrative.province",
