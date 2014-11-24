@@ -50,6 +50,11 @@ class Tournament(models.Model):
     def __unicode__(self):
         return self.name + ' ' + self.date.strftime('%d %B %y')
         
+    def clear_cache(self):
+        cache_key = 'comp_totals' + str(self.pk)
+        cache.delete(cache_key)
+
+
     def totals(self):
         cache_key = 'comp_totals' + str(self.pk)
         cache_time = 1800 # time to live in seconds
@@ -90,25 +95,23 @@ class Standings(models.Model):
     class Meta:
         verbose_name_plural = "standings"
     def give_points(self):
-        points = Points.objects.filter(standings=self).order_by('-points')
-        scores = [4,2,1]
+        points  = Points.objects.filter(standings=self).order_by('-score').exclude(score__isnull=True).all()
+        p       = [7,5,3]
         for i in range(len(points)):
             s = 0
             if i<3:
-                s=scores[i]
-            points[i].score = s
+                s = p[i]
+            points[i].points = i
+            points[i].save()
+            
     def __unicode__(self):
-        return self.discipline.name + '-'+ self.tournament
+        return self.discipline.name + '-'+ self.tournament.date.strftime('%d %B %y')
 
 class Points(models.Model):
     user        = models.ForeignKey(User)
     standings   = models.ForeignKey(Standings)
     points      = models.IntegerField()
     score       = models.IntegerField(null=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        self.standings.give_points()   
-        super(Points, self).save(*args, **kwargs) # Call the "real" save() method.
  
     class Meta:
         verbose_name_plural = "points"

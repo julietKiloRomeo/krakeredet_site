@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from hello.models import Points, Tournament, Discipline, Standings
+from hello.models import Points, Tournament, Discipline, Standings, Fish
 from django.contrib.auth.models import User
 
 class Command(BaseCommand):
@@ -7,31 +7,34 @@ class Command(BaseCommand):
     help = 'sets up a database with default elements'
 
     def handle(self, *args, **options):
+        Fish.objects.all().delete()
         Points.objects.all().delete()
         Standings.objects.all().delete()
+        Discipline.objects.all().delete()
         Tournament.objects.all().delete()
         
         
         # disciplines       
-#        Discipline.objects.all().delete()
-#        dart = Discipline(name = 'Dart',
-#                          description = 'Mickey Mouse')  
-#        skydning = Discipline(name = 'Skydning',
-#                          description = 'Luftgevar')  
-#        kroket = Discipline(name = 'Kroket',
-#                          description = 'Vansjo rules')  
-#        poker  = Discipline(name = 'Poker',
-#                          description = "Hold 'Em")  
-#        dart.save()
-#        skydning.save()
-#        kroket.save()
+        dart = Discipline(name = 'Dart',
+                          description = 'Mickey Mouse')  
+        skydning = Discipline(name = 'Skydning',
+                          description = 'Luftgevar')  
+        kroket = Discipline(name = 'Kroket',
+                          description = 'Vansjo rules')  
+        poker  = Discipline(name = 'Poker',
+                          description = "Hold 'Em")  
+        fiskning  = Discipline(name = 'Fiskning',
+                          description = ".d.d.")  
+        dart.save()
+        skydning.save()
+        kroket.save()
+        poker.save()
+        fiskning.save()
         
-#        poker.save()
         
-        
-        dart     = Discipline.objects.get(name='Dart')        
-        skydning = Discipline.objects.get(name='Skydning')        
-        kroket   = Discipline.objects.get(name='Kroket')        
+#        dart     = Discipline.objects.get(name='Dart')        
+#        skydning = Discipline.objects.get(name='Skydning')        
+#        kroket   = Discipline.objects.get(name='Kroket')        
         
         # tournaments
         comp1 = Tournament(name = 'Vansjo Open',
@@ -87,23 +90,19 @@ class Command(BaseCommand):
 
         p = Points(points = 4, 
                    user = jimbo,
-                   standings = dart_results1,
-                   score = 14)
+                   standings = dart_results1)
         p.save()
         p = Points(points = 3, 
                    user = brede,
-                   standings = dart_results1,
-                   score = 10)
+                   standings = dart_results1)
         p.save()
         p = Points(points = 2, 
                    user = tombo,
-                   standings = dart_results1,
-                   score = 8)
+                   standings = dart_results1)
         p.save()
         p = Points(points = 1, 
                    user = pagh,
-                   standings = dart_results1,
-                   score = 7)
+                   standings = dart_results1)
         p.save()
 
 
@@ -126,39 +125,32 @@ class Command(BaseCommand):
 
         p = Points(points = 0, 
                    user = jimbo,
-                   standings = krok_results1,
-                   score = 5)
+                   standings = krok_results1)
         p.save()
         p = Points(points = 4, 
                    user = brede,
-                   standings = krok_results1,
-                   score = 100)
+                   standings = krok_results1)
         p.save()
         p = Points(points = 3, 
                    user = tombo,
-                   standings = krok_results1,
-                   score = 71)
+                   standings = krok_results1)
         p.save()
         p = Points(points = 2, 
                    user = pagh,
-                   standings = krok_results1,
-                   score = 65)
+                   standings = krok_results1)
         p.save()
         #----------
         p = Points(points = 4, 
                    user = jimbo,
-                   standings = dart_results2,
-                   score = 12)
+                   standings = dart_results2)
         p.save()
         p = Points(points = 2, 
                    user = brede,
-                   standings = dart_results2,
-                   score = 6)
+                   standings = dart_results2)
         p.save()
         p = Points(points = 3, 
                    user = tombo,
-                   standings = dart_results2,
-                   score = 11)
+                   standings = dart_results2)
         p.save()
 
         p = Points(points = 2, 
@@ -179,35 +171,29 @@ class Command(BaseCommand):
 
         p = Points(points = 0, 
                    user = jimbo,
-                   standings = krok_results2,
-                   score = 4)
+                   standings = krok_results2)
         p.save()
         p = Points(points = 4, 
                    user = brede,
-                   standings = krok_results2,
-                   score = 107)
+                   standings = krok_results2)
         p.save()
         p = Points(points = 3, 
                    user = tombo,
-                   standings = krok_results2,
-                   score = 87)
+                   standings = krok_results2)
         p.save()
 
         #----------
         p = Points(points = 2, 
                    user = jimbo,
-                   standings = dart_results3,
-                   score = 11)
+                   standings = dart_results3)
         p.save()
         p = Points(points = 3, 
                    user = brede,
-                   standings = dart_results3,
-                   score = 9)
+                   standings = dart_results3)
         p.save()
         p = Points(points = 4, 
                    user = tombo,
-                   standings = dart_results3,
-                   score = 17)
+                   standings = dart_results3)
         p.save()
 
         p = Points(points = 2, 
@@ -228,16 +214,13 @@ class Command(BaseCommand):
 
         p = Points(points = 0, 
                    user = jimbo,
-                   standings = krok_results3,
-                   score = 42)
+                   standings = krok_results3)
         p.save()
         p = Points(points = 4, 
                    user = brede,
-                   standings = krok_results3,
-                   score = 105)
+                   standings = krok_results3)
         p.save()
         p = Points(points = 3, 
                    user = tombo,
-                   standings = krok_results3,
-                   score = 91)
+                   standings = krok_results3)
         p.save()

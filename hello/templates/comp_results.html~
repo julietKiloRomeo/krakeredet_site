@@ -1,0 +1,38 @@
+
+			<table>
+   		<caption> Total </caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Score</th> </tr>			
+			</thead>
+			<tbody>
+			{% for participant in comp.totals.total|dictsortreversed:"points" %}
+				<tr>
+   		<td> {{participant.name}} </td><td>{{participant.points}}</td>
+				</tr>		
+			{% endfor %}
+			</tbody>
+			</table>   		
+
+
+ <form action="/resultater/{{comp.pk}}/" method="post">
+{% for disc_name, s in standings.items %}
+	<div style="width:30%;float:left;">
+			<table>
+   		<caption> <a href="/disiplin/1/">{{disc_name}}</a></caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Points</th> <th>Score</th> </tr>			
+			</thead>
+			<tbody>
+			{% for user_name,up in s.items %}
+				<tr>
+		   		<td> {{user_name}} </td>
+		   		<td><input type="text" name="points_{{disc_name}}_{{user_name}}" value="{{up.1.0.points}}"></td>
+		   		<td> {% if up.1.0.score %}  <input type="text" name="score" value="{{up.1.0.score}}"> {%endif%} </td>
+				</tr>		
+			{% endfor %}
+			</tbody>
+			</table>   		
+	</div>
+{% endfor %}
+<input type="submit" value="OK">
+</form> 

@@ -128,6 +128,46 @@ def add_fish(request):
 
 
 
+@csrf_exempt
+def comp_results(request, comp_id):
+    comp            = Tournament.objects.get(pk=comp_id)
+
+    if request.method == 'POST':
+        post_dict = request.POST.items()
+        for tpl in post_dict:
+            k = tpl[0]
+            val = tpl[1]
+            (ps, disc, u)=k.split('_')
+            p = Points.objects.filter(standings__discipline__name=disc).filter(user__first_name=u).get(standings__tournament=comp)
+            if ps=='points':
+                p.points=int(val)
+            elif ps=='score':
+                p.score=int(val)
+                p.standings.give_points()
+            p.save()
+        comp.clear_cache()
+
+
+
+
+    comp_standings  = Standings.objects.filter(tournament=comp_id)
+    comp_users      = User.objects.filter(points__standings__tournament=comp_id).distinct()
+    
+    standings_dict = {}    
+    for cs in comp_standings:
+        disc = cs.discipline.name
+        standings_dict[disc] = {}
+        for u in comp_users:
+            p = Points.objects.filter(user=u).filter(standings__tournament=comp_id).filter(standings__discipline=cs.discipline).distinct()
+            standings_dict[disc][u.first_name] = [u, p]
+        
+    return render(request, 'comp_results.html', {'request':request,
+                                              'comp': comp,
+                                              'users':comp_users,
+                                              'standings': standings_dict})
+
+
+
 def user_detail(request, username):
     # fetch user
     comps = Tournament.objects.all()
