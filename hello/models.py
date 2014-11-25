@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.cache import cache
 from django.contrib.auth.models import User
+import pdb
 
 class Profile(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
@@ -95,14 +96,14 @@ class Standings(models.Model):
     class Meta:
         verbose_name_plural = "standings"
     def give_points(self):
-        points  = Points.objects.filter(standings=self).order_by('-score').exclude(score__isnull=True).all()
-        p       = [7,5,3]
-        for i in range(len(points)):
+        points  = Points.objects.filter(standings=self).order_by('-score').exclude(score=None).all()
+        p       = [4,2,1]
+        for idx, pnt in enumerate(points):
             s = 0
-            if i<3:
-                s = p[i]
-            points[i].points = i
-            points[i].save()
+            if idx<3:
+                s = p[idx]
+            pnt.points = s
+            pnt.save()
             
     def __unicode__(self):
         return self.discipline.name + '-'+ self.tournament.date.strftime('%d %B %y')

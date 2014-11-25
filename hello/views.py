@@ -9,7 +9,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from models import Profile, Tournament, Discipline, Points, Fish, Standings
 from django.views.decorators.csrf import csrf_exempt
-
+import pdb
+from django.db.models import Max
 
 # Create your views here.
 def index(request):
@@ -143,8 +144,8 @@ def comp_results(request, comp_id):
                 p.points=int(val)
             elif ps=='score':
                 p.score=int(val)
-                p.standings.give_points()
             p.save()
+            p.standings.give_points()
         comp.clear_cache()
 
 
@@ -159,7 +160,8 @@ def comp_results(request, comp_id):
         standings_dict[disc] = {}
         for u in comp_users:
             p = Points.objects.filter(user=u).filter(standings__tournament=comp_id).filter(standings__discipline=cs.discipline).distinct()
-            standings_dict[disc][u.first_name] = [u, p]
+            if p:
+                standings_dict[disc][u.first_name] = [u, p]
         
     return render(request, 'comp_results.html', {'request':request,
                                               'comp': comp,
@@ -260,6 +262,29 @@ def fish_detail(request, idx):
                                                 'fish':fish})
 
 
+def records(request):
+    comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
+
+
+    record_list = {}
+    disciplines = Discipline.objects.all()
+    users       = User.objects.all()
+    for d in disciplines:
+        all_scores = Points.objects.filter(standings__discipline=d)
+        record_list[d.name] = []
+        for u in users:
+            u_best = all_scores.filter(user=u).aggregate(Max('score'))
+            if u_best['score__max']:
+                record_list[d.name].append({'name':u.first_name, 'score':u_best['score__max']})
+    return render(request, 'records.html',{'request':request,
+                                                'users': users,
+                                                'fishes': fishes,
+                                                'disciplines': disciplines,
+                                                'comps': comps,
+                                                'records': record_list})
 
 
 
