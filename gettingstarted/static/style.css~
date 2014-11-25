@@ -83,15 +83,11 @@ a:hover {
 
 #logo {    
    position:absolute;
-   left:45%;
-   width:10%;
+   left:47.5%;
+   width:5%;
    top:0px;
    z-index:11;
-   }
-   
-
-
-#logo img {
+   background: #ffffff;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -99,6 +95,20 @@ a:hover {
 -webkit-border-radius: 50%;
 -moz-border-radius: 50%;
 border-radius: 50%;  
+overflow:hidden;
+   }
+#logo:after {
+    padding-top: 50%; 
+    content: '';
+}
+
+
+#logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
    
@@ -141,7 +151,7 @@ border-radius: 50%;
    height:100%;
    line-height:100%;
 	font-size: 12px;
-   width:25%;
+   width:17%;
    text-align:center;
    }
 
@@ -222,7 +232,7 @@ a:hover { color: #fff; }
   display: block; 
   height: 100%;
   line-height:100%;
-  font: bold 15px/15px arial, sans-serif; 
+  font: bold 15px/40px arial, sans-serif; 
   text-align: center; 
   text-decoration: none; 
   color: #FFF;  

@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-		{% block script %}
-		{% include 'google_maps_script.html' %}
-		{% endblock %}
-
-
 
 {% block navmenu %} <a href="/">kråkeredet</a> &middot; <a href="/fisk/">fish</a> {% endblock %}
 
@@ -21,9 +16,6 @@
 
 {% block body_block %}
 
-<div id="body">
-	
-<div id="googleMap" style="width:100%;height:100% "></div>	
-	
-</div>
+
+
 {% endblock %}

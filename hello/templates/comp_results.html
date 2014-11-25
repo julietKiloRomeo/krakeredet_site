@@ -27,7 +27,7 @@
 				<tr>
 		   		<td> {{user_name}} </td>
 		   		<td><input type="text" name="points_{{disc_name}}_{{user_name}}" value="{{up.1.0.points}}"></td>
-		   		<td> {% if up.1.0.score %}  <input type="text" name="score_{{disc_name}}_{{user_name}}" value="{{up.1.0.score}}"> {%endif%} </td>
+		   		<td><input type="text" name="score_{{disc_name}}_{{user_name}}"  value="{{up.1.0.score}}">  </td>
 				</tr>		
 			{% endfor %}
 			</tbody>

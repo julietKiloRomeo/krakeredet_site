@@ -8,16 +8,16 @@
 <div style="width:90%; height:90%; position:absolute; top:15%;">
 
 {% for disc_name,rec_list in records.items %}
-{% if rec_list %}
-	<div style="width:30%;width:30%;float:left;">
-		<h3> {{disc_name}} </h3>
-		{% for rec in rec_list|dictsortreversed:"score" %}
-			{{rec.name}} {{rec.score}} <br>
-		{% endfor %}
-
-	</div>
-	{% endfor %}
-{%endif%}
+	{% if rec_list %}
+		<div style="width:30%;width:30%;float:left;">
+			<h3> {{disc_name}} </h3>
+			{%if images.disc_name%}<img src={{images.disc_name}} width="30%">{%endif%}
+			{% for rec in rec_list|dictsortreversed:"score" %}
+				{{rec.name}} {{rec.score}} <br>
+			{% endfor %}
+		</div>
+	{%endif%}
+{% endfor %}
 
 
 </div>

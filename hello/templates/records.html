@@ -10,10 +10,20 @@
 {% for disc_name,rec_list in records.items %}
 	{% if rec_list %}
 		<div style="width:30%;width:30%;float:left;">
-			<h3> {{disc_name}} </h3>
+			<table>
+   		<caption> <a href="/disiplin/1/">{{disc_name}}</a></caption>
+			<thead>
+			<tr>  <th>Name</th> <th>Score</th> </tr>			
+			</thead>
+			<tbody>
 			{% for rec in rec_list|dictsortreversed:"score" %}
-				{{rec.name}} {{rec.score}} <br>
+				<tr>
+		   		<td> {{rec.name}} </td>
+		   		<td>{{rec.score}} </td>
+				</tr>		
 			{% endfor %}
+			</tbody>
+			</table>   		
 		</div>
 	{%endif%}
 {% endfor %}

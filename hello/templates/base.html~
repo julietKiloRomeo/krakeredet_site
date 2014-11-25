@@ -21,16 +21,6 @@
 
 <body>
 
-	<div id="breadcrumbs">
-		{% block usermenu %}
-
-			{% if request.user.is_authenticated %}
-				<a href="/profil/{{request.user}}/">{{request.user}}</a>
-			{% else %}
-				<a href="/login/">login</a>
-			{% endif %}
-		{% endblock %} | {% block breadcrumbs %}{% endblock %}
-	</div>
 
 	<div id="logo">
 		<a>  <a href="/"> <img src={% static "media/crow.jpg" %} width="80%"></a>   

@@ -137,13 +137,16 @@ def comp_results(request, comp_id):
         post_dict = request.POST.items()
         for tpl in post_dict:
             k = tpl[0]
-            val = tpl[1]
+            if tpl[1]:
+                val=int(tpl[1])
+            else:
+                val=None
             (ps, disc, u)=k.split('_')
             p = Points.objects.filter(standings__discipline__name=disc).filter(user__first_name=u).get(standings__tournament=comp)
             if ps=='points':
-                p.points=int(val)
+                p.points = val
             elif ps=='score':
-                p.score=int(val)
+                p.score=val
             p.save()
             p.standings.give_points()
         comp.clear_cache()
@@ -270,11 +273,14 @@ def records(request):
 
 
     record_list = {}
+    img_list = {}
     disciplines = Discipline.objects.all()
     users       = User.objects.all()
     for d in disciplines:
         all_scores = Points.objects.filter(standings__discipline=d)
         record_list[d.name] = []
+        if d.image:
+            img_list[d.name] = d.image.url
         for u in users:
             u_best = all_scores.filter(user=u).aggregate(Max('score'))
             if u_best['score__max']:
@@ -284,12 +290,23 @@ def records(request):
                                                 'fishes': fishes,
                                                 'disciplines': disciplines,
                                                 'comps': comps,
+                                                'images': img_list,
                                                 'records': record_list})
 
 
 
 
-
+def map(request):
+    comps = Tournament.objects.all()
+    users = User.objects.all()
+    disciplines = Discipline.objects.all()
+    fishes = Fish.objects.all()
+    
+    return render(request, 'kort.html',{'request':request,
+                                                'users': users,
+                                                'fishes': fishes,
+                                                'disciplines': disciplines,
+                                                'comps': comps})
 
 
 
