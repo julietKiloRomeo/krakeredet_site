@@ -30,6 +30,10 @@ class Discipline(models.Model):
     def __unicode__(self):
         return self.name
 
+    def clear_cache(self):
+        cache_key = 'disc_record' + str(self.pk)
+        cache.delete(cache_key)
+
     def record(self):
         cache_key = 'disc_record' + str(self.pk)
         cache_time = 1800 # time to live in seconds
@@ -96,11 +100,17 @@ class Standings(models.Model):
     class Meta:
         verbose_name_plural = "standings"
     def give_points(self):
+        # find all points in this standing (one discipline in a tournament)
+        # and order by score to find winner, runner-up etc.
+        # if score is Null for all, no changes are made.
         points  = Points.objects.filter(standings=self).order_by('-score').exclude(score=None).all()
+        # points awarded to each place in standings
         p       = [4,2,1]
         for idx, pnt in enumerate(points):
+            # init points to zero
             s = 0
-            if idx<3:
+            # and set to non-zero if placement in standings is high enough
+            if idx<len(p):
                 s = p[idx]
             pnt.points = s
             pnt.save()

@@ -14,6 +14,7 @@ from django.db.models import Max
 
 # Create your views here.
 def index(request):
+    # index page
     comps = Tournament.objects.all()
     users = User.objects.all()
     disciplines = Discipline.objects.all()
@@ -64,6 +65,7 @@ def fish_list(request):
     disciplines = Discipline.objects.all()
     fishes = Fish.objects.all()
     coord = []
+    # get coordinates for each fish and add to coord list
     for fish in fishes:
         coord.append([fish.lat, fish.lon])
     return render(request, 'fish_list.html', {'request':request,
@@ -79,37 +81,39 @@ def add_fish(request):
     context = RequestContext(request)
     
     if request.method == 'POST':
-        input_comp = request.POST.get("comp")
-        input_user = request.POST.get("user")
-        input_species = request.POST.get("species")
-        input_weight = request.POST.get("weight")
-        input_lat = float(request.POST.get("lat"))
-        input_lon = float(request.POST.get("lon"))
+        # get data from input form
+        input_comp      = request.POST.get("comp")
+        input_user      = request.POST.get("user")
+        input_species   = request.POST.get("species")
+        input_weight    = request.POST.get("weight")
+        input_lat       = float(request.POST.get("lat"))
+        input_lon       = float(request.POST.get("lon"))
         
-        user = User.objects.get(username = input_user)                
-        comp = Tournament.objects.get(pk=input_comp)
+        user            = User.objects.get(username = input_user)                
+        comp            = Tournament.objects.get(pk=input_comp)
         standings_query = Standings.objects.filter(tournament=comp).filter(discipline__name='Fiskning')
         
         if not standings_query:
-            disc = Discipline.objects.get(name='Fiskning')
-            standings = Standings(discipline = disc,
+            # make new standings object if it does not exist
+            disc        = Discipline.objects.get(name='Fiskning')
+            standings   = Standings(discipline = disc,
                                   tournament = comp)
             standings.save()
         else:
-            standings = standings_query[0]
+            standings = standings_query.all()
             
-        
-        p = Points(points = input_weight, 
-                   user = user,
-                   standings = standings,
-                   score = 4)
+        # create points for new fish in DB
+        p = Points(points       = input_weight, 
+                   user         = user,
+                   standings    = standings,
+                   score        = 4)
         p.save()
-        
-        f = Fish(species = input_species,
-                 weight = input_weight,
-                 lat = input_lat,
-                 lon = input_lon,
-                 points=p)        
+        # create  fish in DB
+        f = Fish(species    = input_species,
+                 weight     = input_weight,
+                 lat        = input_lat,
+                 lon        = input_lon,
+                 points     = p)        
         f.save()
         
         fishes = Fish.objects.all()

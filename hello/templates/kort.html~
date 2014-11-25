@@ -20,8 +20,8 @@
 
 
 <form action="">
-<input type="checkbox" id="crows" value="crow">Kråker<br>
-<input type="checkbox" id="dragons" value="dragon">Draker<br> 
+<input type="checkbox" name="crows" value="crow">Kråker<br>
+<input type="checkbox" name="dragons" value="dragon">Draker<br> 
 </form>
 
 </div>
